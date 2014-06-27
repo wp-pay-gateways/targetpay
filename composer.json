@@ -1,0 +1,21 @@
+{
+	"name": "wp-pay-gateways/targetpay",
+	"description": "TargetPay driver for the WordPress payment processing library.",
+	"keywords": ["wordpress", "wp", "pay", "targetpay", "gateway", "pronamic"],
+	"homepage": "https://github.com/wp-pay-gateways/targetpay",
+	"autoload": {
+		"classmap": ["src/"]
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/wp-pay/core"
+		}
+	],
+	"require": {
+		"wp-pay/core": "dev-develop"
+	},
+	"require-dev": {
+		"satooshi/php-coveralls": "dev-master"
+	}
+}
