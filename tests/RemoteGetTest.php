@@ -26,7 +26,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_RemoteGetTest extends PHPUnit_Framework
 		return $processedHeaders;
 	}
 
-	public function testTransform() {
+	public function test_get_issuers() {
 		add_filter( 'pre_http_request', array( $this, 'pre_http_request' ), 10, 3 );
 
 		$url = 'https://www.targetpay.com/ideal/getissuers.php?format=xml';

@@ -1,0 +1,33 @@
+{
+  "name": "targetpay",
+  "version": "1.0.0",
+  "description": "TargetPay driver for the WordPress payment processing library.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wp-pay-gateways/targetpay"
+  },
+  "keywords": ["wordpress", "wp", "pay", "targetpay", "gateway", "pronamic"],
+  "author": {
+    "name": "Pronamic",
+    "email": "info@pronamic.nl",
+    "url": "http://www.pronamic.nl/"
+  },
+  "contributors": [
+    {
+      "name": "Remco Tolsma",
+      "email": "info@remcotolsma.nl",
+      "url": "http://www.remcotolsma.nl/"
+    }
+  ],
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/wp-pay-gateways/targetpay/issues"
+  },
+  "homepage": "http://www.wp-pay.org/gateways/targetpay/",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-phplint": "0.0.5",
+    "grunt-phpmd": "^0.1.0",
+    "grunt-phpcs": "^0.2.2"
+  }
+}

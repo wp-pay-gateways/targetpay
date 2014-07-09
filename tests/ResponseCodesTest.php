@@ -10,15 +10,15 @@
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodesTest extends PHPUnit_Framework_TestCase {
 	/**
-	 * @dataProvider statusMatrixProvider
+	 * @dataProvider status_matrix_provider
 	 */
-	public function testTransform( $responseCode, $expected ) {
+	public function test_transform( $responseCode, $expected ) {
 		$status = Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::transform( $responseCode );
 
 		$this->assertEquals( $expected, $status );
 	}
 
-	public function statusMatrixProvider() {
+	public function status_matrix_provider() {
 		return array(
 			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::OK, Pronamic_WP_Pay_Statuses::SUCCESS ),
 			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::TRANSACTION_NOT_COMPLETED, Pronamic_WP_Pay_Statuses::OPEN ),
@@ -26,5 +26,5 @@ class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodesTest extends PHPUnit_Frame
 			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::TRANSACTION_EXPIRED, Pronamic_WP_Pay_Statuses::EXPIRED ),
 			array( 'not existing response code', null ),
 		);
-    }
+	}
 }
