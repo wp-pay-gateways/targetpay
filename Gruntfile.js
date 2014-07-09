@@ -4,6 +4,11 @@ module.exports = function( grunt ) {
 		// Package
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+		// JSHint
+		jshint: {
+			all: [ 'Gruntfile.js', 'composer.json', 'package.json' ]
+		},
+
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
@@ -39,10 +44,11 @@ module.exports = function( grunt ) {
 		},
 	} );
 
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-phplint' );
 	grunt.loadNpmTasks( 'grunt-phpmd' );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'phplint', 'phpmd', 'phpcs' ] );
+	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpmd', 'phpcs' ] );
 };

@@ -6,7 +6,14 @@
     "type": "git",
     "url": "https://github.com/wp-pay-gateways/targetpay"
   },
-  "keywords": ["wordpress", "wp", "pay", "targetpay", "gateway", "pronamic"],
+  "keywords": [
+    "wordpress",
+    "wp",
+    "pay",
+    "targetpay",
+    "gateway",
+    "pronamic"
+  ],
   "author": {
     "name": "Pronamic",
     "email": "info@pronamic.nl",
@@ -28,6 +35,7 @@
     "grunt": "~0.4.2",
     "grunt-phplint": "0.0.5",
     "grunt-phpmd": "^0.1.0",
-    "grunt-phpcs": "^0.2.2"
+    "grunt-phpcs": "^0.2.2",
+    "grunt-contrib-jshint": "^0.10.0"
   }
 }
