@@ -26,7 +26,7 @@
       "url": "http://www.remcotolsma.nl/"
     }
   ],
-  "license": "GPL-3.0+",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/wp-pay-gateways/targetpay/issues"
   },

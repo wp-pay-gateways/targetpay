@@ -3,7 +3,7 @@
 	"description": "TargetPay driver for the WordPress payment processing library.",
 	"keywords": ["wordpress", "wp", "pay", "targetpay", "gateway", "pronamic"],
 	"homepage": "http://www.wp-pay.org/gateways/targetpay/",
-	"license": "GPL-3.0+",
+	"license": "GPL",
 	"authors": [
 		{
 			"name": "Pronamic",
