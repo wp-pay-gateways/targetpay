@@ -107,9 +107,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	//////////////////////////////////////////////////
 
 	private function remote_get( $url ) {
-		return Pronamic_WP_Util::remote_get_body( $url, 200, array(
-			'sslverify' => false,
-		) );
+		return Pronamic_WP_Util::remote_get_body( $url, 200 );
 	}
 
 	//////////////////////////////////////////////////
