@@ -9,3 +9,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/targetpay/v/unstable.svg)](https://packagist.org/packages/wp-pay-gateways/targetpay)
 [![License](https://poser.pugx.org/wp-pay-gateways/targetpay/license.svg)](https://packagist.org/packages/wp-pay-gateways/targetpay)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
+## Documentation
+
+*	[TargetPay iDEAL V1.1 in PDF formaat](http://pronamic.nl/wp-content/uploads/2014/09/TargetPay_iDEAL_V1.1_nl.pdf)
