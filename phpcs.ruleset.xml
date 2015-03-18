@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Orbis Timesheets rules">
+<ruleset name="TargetPay rules">
 	<rule ref="WordPress">	
 		<exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.wp_remote_get" />
