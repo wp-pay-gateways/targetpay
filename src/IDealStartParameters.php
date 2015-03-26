@@ -42,7 +42,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters {
 		$array = parent::get_array();
 
 		$array['bank']              = $this->bank;
-		$array['cinfo_in_callback'] = $this->cinfo_in_callback;
+		$array['cinfo_in_callback'] = Pronamic_WP_Util::to_numeric_boolean( $this->cinfo_in_callback );
 
 		return $array;
 	}

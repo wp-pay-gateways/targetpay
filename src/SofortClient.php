@@ -32,10 +32,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_SofortClient {
 	 * @param Pronamic_WP_Pay_Gateways_TargetPay_Sofort_StartParameters $parameters
 	 */
 	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_SofortStartParameters $parameters ) {
-		$url = Pronamic_WP_Util::build_url(
-			self::URL_START_TRANSACTION,
-			$parameters->get_array()
-		);
+		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
 
 		$data = self::remote_get( $url );
 

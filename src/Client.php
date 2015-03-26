@@ -124,7 +124,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	 * @param string $cinfo_in_callback https://www.targetpay.com/info/directdebit-docu
 	 */
 	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters $parameters ) {
-		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, $parameters );
+		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
 
 		$data = self::remote_get( $url );
 

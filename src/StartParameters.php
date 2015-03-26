@@ -77,7 +77,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StartParameters implements IteratorAggr
 		return array(
 			'rtlo'        => $this->rtlo,
 			'description' => $this->description,
-			'amount'      => $this->amount,
+			'amount'      => Pronamic_WP_Util::amount_to_cents( $amount ),
 			'country'     => $this->country,
 			'lang'        => $this->language,
 			'returnurl'   => $this->return_url,
