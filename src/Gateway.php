@@ -76,14 +76,16 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 */
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment ) {
-		$result = $this->client->start_transaction(
-			$this->config->layoutcode,
-			$data->get_issuer_id(),
-			$data->get_description(),
-			$data->get_amount(),
-			add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) ),
-			add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) )
-		);
+		$parameters = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
+		$parameters->rtlo              = $this->config->layoutcode;
+		$parameters->bank              = $data->get_issuer_id();
+		$parameters->description       = $data->get_description();
+		$parameters->amount            = $data->get_amount();
+		$parameters->return_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
+		$parameters->report_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
+		$parameters->cinfo_in_callback = 1;
+
+		$result = $this->client->start_transaction( $parameters );
 
 		if ( $result ) {
 			$payment->set_action_url( $result->url );

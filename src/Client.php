@@ -123,19 +123,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	 * @param string $reporturl
 	 * @param string $cinfo_in_callback https://www.targetpay.com/info/directdebit-docu
 	 */
-	public function start_transaction( $rtlo, $bank, $description, $amount, $returnurl, $reporturl, $cinfo_in_callback = 1 ) {
-		$url = Pronamic_WP_Util::build_url(
-			self::URL_START_TRANSACTION,
-			array(
-				'rtlo'              => $rtlo,
-				'bank'              => $bank,
-				'description'       => $description,
-				'amount'            => Pronamic_WP_Util::amount_to_cents( $amount ),
-				'returnurl'         => $returnurl,
-				'reporturl'         => $reporturl,
-				'cinfo_in_callback' => Pronamic_WP_Util::to_numeric_boolean( $cinfo_in_callback )
-			)
-		);
+	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters $parameters ) {
+		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, $parameters );
 
 		$data = self::remote_get( $url );
 
