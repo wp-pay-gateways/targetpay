@@ -131,7 +131,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 		if ( false !== $data ) {
 			$status = strtok( $data, self::TOKEN );
 
-			if ( $status == self::STATUS_OK ) {
+			if ( self::STATUS_OK === $status ) {
 				$result = new stdClass();
 
 				$result->status         = $status;
@@ -169,7 +169,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				'rtlo'  => $rtlo,
 				'trxid' => $transaction_id,
 				'once'  => Pronamic_WP_Util::to_numeric_boolean( $once ),
-				'test'  => Pronamic_WP_Util::to_numeric_boolean( $test )
+				'test'  => Pronamic_WP_Util::to_numeric_boolean( $test ),
 			)
 		);
 

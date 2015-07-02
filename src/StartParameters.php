@@ -92,7 +92,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StartParameters implements IteratorAggr
 	 *
 	 * @return ArrayIterator
 	 */
-    public function getIterator() {
-        return new ArrayIterator( $this->get_array() );
-    }
+	public function getIterator() {
+		return new ArrayIterator( $this->get_array() );
+	}
 }

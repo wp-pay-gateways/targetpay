@@ -36,10 +36,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_SofortClient {
 
 		$data = self::remote_get( $url );
 
-		if ( false !== $data ) {
-			var_dump( $data );
-		}
-
-		
+		// @todo need work
 	}
 }

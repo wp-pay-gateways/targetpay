@@ -30,7 +30,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser {
 		$position_space = strpos( $string, ' ' );
 		$position_pipe  = strpos( $string, '|' );
 
-		if ( $position_space !== false ) {
+		if ( false !== $position_space ) {
 			/*
 			 * @see https://www.targetpay.com/info/ideal-docu
 			 *
@@ -52,7 +52,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser {
 			$status->code = substr( $string, 0, $position_space );
 
 			$position_description = $position_space + 1;
-			if ( $position_pipe !== false ) {
+			if ( false !== $position_pipe ) {
 				$length = $position_pipe - $position_description;
 
 				$status->description = substr( $string, $position_description, $length );
@@ -60,7 +60,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser {
 				$status->description = substr( $string, $position_description );
 			}
 
-			if ( $position_pipe !== false ) {
+			if ( false !== $position_pipe ) {
 				$extra = substr( $string, $position_pipe + 1 );
 
 				/*

@@ -64,7 +64,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 			'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
 			'required' => true,
 			'type'     => 'select',
-			'choices'  => $this->get_transient_issuers()
+			'choices'  => $this->get_transient_issuers(),
 		);
 	}
 
@@ -107,13 +107,13 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 			$this->config->layoutcode,
 			$payment->get_transaction_id(),
 			false,
-			$this->config->mode == Pronamic_IDeal_IDeal::MODE_TEST
+			Pronamic_IDeal_IDeal::MODE_TEST === $this->config->mode
 		);
 
 		if ( $status ) {
 			$payment->set_status( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::transform( $status->code ) );
 
-			if ( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::OK == $status->code ) {
+			if ( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::OK === $status->code ) {
 				$payment->set_consumer_name( $status->account_name );
 				$payment->set_consumer_account_number( $status->account_number );
 				$payment->set_consumer_city( $status->account_city );
