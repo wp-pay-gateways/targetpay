@@ -205,8 +205,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				$issuers = array();
 
 				foreach ( $xml->issuer as $xml_issuer ) {
-					$id   = Pronamic_XML_Util::filter( $xml_issuer['id'] );
-					$name = Pronamic_XML_Util::filter( $xml_issuer );
+					$id   = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer['id'] );
+					$name = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer );
 
 					$issuers[ $id ] = $name;
 				}
