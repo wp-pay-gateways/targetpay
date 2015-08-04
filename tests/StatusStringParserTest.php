@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Title: TargetPay status string parser test
+ * Description:
+ * Copyright: Copyright (c) 2005 - 2015
+ * Company: Pronamic
+ * @author Remco Tolsma
+ * @version 1.0.0
+ */
 class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParserTest extends PHPUnit_Framework_TestCase {
 	function test_parse_status_ok() {
 		$status_string = '000000 OK';

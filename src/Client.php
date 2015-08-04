@@ -123,26 +123,15 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	 * @param string $reporturl
 	 * @param string $cinfo_in_callback https://www.targetpay.com/info/directdebit-docu
 	 */
-	public function start_transaction( $rtlo, $bank, $description, $amount, $returnurl, $reporturl, $cinfo_in_callback = 1 ) {
-		$url = Pronamic_WP_Util::build_url(
-			self::URL_START_TRANSACTION,
-			array(
-				'rtlo'              => $rtlo,
-				'bank'              => $bank,
-				'description'       => $description,
-				'amount'            => Pronamic_WP_Util::amount_to_cents( $amount ),
-				'returnurl'         => $returnurl,
-				'reporturl'         => $reporturl,
-				'cinfo_in_callback' => Pronamic_WP_Util::to_numeric_boolean( $cinfo_in_callback )
-			)
-		);
+	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters $parameters ) {
+		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
 
 		$data = self::remote_get( $url );
 
 		if ( false !== $data ) {
 			$status = strtok( $data, self::TOKEN );
 
-			if ( $status == self::STATUS_OK ) {
+			if ( self::STATUS_OK === $status ) {
 				$result = new stdClass();
 
 				$result->status         = $status;
@@ -180,7 +169,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				'rtlo'  => $rtlo,
 				'trxid' => $transaction_id,
 				'once'  => Pronamic_WP_Util::to_numeric_boolean( $once ),
-				'test'  => Pronamic_WP_Util::to_numeric_boolean( $test )
+				'test'  => Pronamic_WP_Util::to_numeric_boolean( $test ),
 			)
 		);
 
@@ -216,8 +205,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				$issuers = array();
 
 				foreach ( $xml->issuer as $xml_issuer ) {
-					$id   = Pronamic_XML_Util::filter( $xml_issuer['id'] );
-					$name = Pronamic_XML_Util::filter( $xml_issuer );
+					$id   = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer['id'] );
+					$name = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer );
 
 					$issuers[ $id ] = $name;
 				}

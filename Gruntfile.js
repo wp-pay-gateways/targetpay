@@ -1,4 +1,6 @@
 module.exports = function( grunt ) {
+	require( 'load-grunt-tasks' )( grunt );
+
 	// Project configuration.
 	grunt.initConfig( {
 		// Package
@@ -12,12 +14,15 @@ module.exports = function( grunt ) {
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
-				dir: [ './' ],
+				src: [
+					'**/*.php',
+					'!node_modules/**',
+					'!vendor/**'
+				],
 			},
 			options: {
 				standard: 'phpcs.ruleset.xml',
-				extensions: 'php',
-				ignore: 'node_modules'
+				showSniffCodes: true
 			}
 		},
 
@@ -28,27 +33,32 @@ module.exports = function( grunt ) {
 					'-lf': null
 				}
 			},
-			all: [ '**/*.php' ]
+			all: [
+				'**/*.php',
+				'!node_modules/**',
+				'!vendor/**'
+			]
 		},
 
 		// PHP Mess Detector
 		phpmd: {
 			application: {
-				dir: '.'
+				dir: 'src'
 			},
 			options: {
-				exclude: 'node_modules',
 				reportFormat: 'xml',
 				rulesets: 'phpmd.ruleset.xml'
 			}
 		},
+
+		// PHP Copy/Paste Detector (PHPCPD)
+		phpcpd: {
+			application: {
+				dir: 'src'
+			}
+		}
 	} );
 
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-phpcs' );
-	grunt.loadNpmTasks( 'grunt-phplint' );
-	grunt.loadNpmTasks( 'grunt-phpmd' );
-
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpmd', 'phpcs' ] );
+	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpmd', 'phpcpd', 'phpcs' ] );
 };
