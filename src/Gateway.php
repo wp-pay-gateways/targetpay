@@ -93,6 +93,10 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 		} else {
 			$this->set_error( $this->client->get_error() );
 		}
+
+		// Schedule transaction status request
+		$time = time();
+		wp_schedule_single_event( $time + 30, 'pronamic_ideal_check_transaction_status', array( 'payment_id' => $payment->get_id(), 'seconds' => 30 ) );
 	}
 
 	/////////////////////////////////////////////////
