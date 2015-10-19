@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Title: TargetPay SOFORT Banking client
  * Description:
