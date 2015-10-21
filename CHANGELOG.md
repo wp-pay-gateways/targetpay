@@ -7,6 +7,10 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.0.4] - 2015-10-21
+- Fixed some issues on the TargetPay library.
+- Fixed Strict standards: Declaration of Pronamic_WP_Pay_Gateways_TargetPay_Gateway::start().
+
 ## [1.0.3] - 2015-10-14
 - Add scheduled transaction status request.
 
