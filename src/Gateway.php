@@ -75,7 +75,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 */
-	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment ) {
+	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
 		$parameters = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
 		$parameters->rtlo              = $this->config->layoutcode;
 		$parameters->bank              = $data->get_issuer_id();

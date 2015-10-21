@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Title: TargetPay start parameters
  * Description:
@@ -73,11 +74,11 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StartParameters implements IteratorAggr
 	 *
 	 * @rerturn array
 	 */
-	protected function get_array() {
+	public function get_array() {
 		return array(
 			'rtlo'        => $this->rtlo,
 			'description' => $this->description,
-			'amount'      => Pronamic_WP_Util::amount_to_cents( $amount ),
+			'amount'      => Pronamic_WP_Pay_Util::amount_to_cents( $this->amount ),
 			'country'     => $this->country,
 			'lang'        => $this->language,
 			'returnurl'   => $this->return_url,
