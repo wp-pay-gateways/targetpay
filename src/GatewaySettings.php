@@ -29,6 +29,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_GatewaySettings extends Pronamic_WP_Pay
 	public function fields( array $fields ) {
 		// Layout Code
 		$fields[] = array(
+			'filter'      => FILTER_SANITIZE_STRING,
 			'section'     => 'targetpay',
 			'meta_key'    => '_pronamic_gateway_targetpay_layoutcode',
 			'title'       => __( 'Layout Code', 'pronamic_ideal' ),
