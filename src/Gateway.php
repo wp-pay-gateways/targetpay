@@ -81,8 +81,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 		$parameters->bank              = $data->get_issuer_id();
 		$parameters->description       = $data->get_description();
 		$parameters->amount            = $data->get_amount();
-		$parameters->return_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
-		$parameters->report_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
+		$parameters->return_url        = $payment->get_return_url();
+		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
 
 		$result = $this->client->start_transaction( $parameters );
