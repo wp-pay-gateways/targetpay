@@ -1,8 +1,11 @@
 <?php
 
-class Pronamic_WP_Pay_Gateways_TargetPay_GatewayIntegration {
+class Pronamic_WP_Pay_Gateways_TargetPay_Integration {
 	public function __construct() {
-		$this->id = 'targetpay-ideal';
+		$this->id            = 'targetpay-ideal';
+		$this->name          = 'TargetPay - iDEAL';
+		$this->dashboard_url = 'https://www.targetpay.com/login';
+		$this->provider      = 'targetpay';
 	}
 
 	public function get_config_factory_class() {
@@ -11,6 +14,10 @@ class Pronamic_WP_Pay_Gateways_TargetPay_GatewayIntegration {
 
 	public function get_config_class() {
 		return 'Pronamic_WP_Pay_Gateways_TargetPay_Config';
+	}
+
+	public function get_settings_class() {
+		return 'Pronamic_WP_Pay_Gateways_TargetPay_Settings';
 	}
 
 	public function get_gateway_class() {
