@@ -3,8 +3,9 @@
 /**
  * Title: TargetPay gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.0.0
  */
@@ -58,13 +59,39 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	/////////////////////////////////////////////////
 
 	public function get_issuer_field() {
+		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $this->get_payment_method() ) {
+			return array(
+				'id'       => 'pronamic_ideal_issuer_id',
+				'name'     => 'pronamic_ideal_issuer_id',
+				'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
+				'required' => true,
+				'type'     => 'select',
+				'choices'  => $this->get_transient_issuers(),
+			);
+		}
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get payment methods
+	 *
+	 * @return mixed an array or null
+	 */
+	public function get_payment_methods() {
+		return Pronamic_WP_Pay_PaymentMethods::IDEAL;
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get supported payment methods
+	 *
+	 * @see Pronamic_WP_Pay_Gateway::get_supported_payment_methods()
+	 */
+	public function get_supported_payment_methods() {
 		return array(
-			'id'       => 'pronamic_ideal_issuer_id',
-			'name'     => 'pronamic_ideal_issuer_id',
-			'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
-			'required' => true,
-			'type'     => 'select',
-			'choices'  => $this->get_transient_issuers(),
+			Pronamic_WP_Pay_PaymentMethods::IDEAL => Pronamic_WP_Pay_PaymentMethods::IDEAL,
 		);
 	}
 
@@ -81,8 +108,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 		$parameters->bank              = $data->get_issuer_id();
 		$parameters->description       = $data->get_description();
 		$parameters->amount            = $data->get_amount();
-		$parameters->return_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
-		$parameters->report_url        = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
+		$parameters->return_url        = $payment->get_return_url();
+		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
 
 		$result = $this->client->start_transaction( $parameters );
@@ -94,8 +121,11 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 			$this->set_error( $this->client->get_error() );
 		}
 
-		// Schedule transaction status request
-		// @since 1.0.3
+		/*
+		 * Schedule transaction status request
+		 *
+		 * @since 1.0.3
+		 */
 		$time = time();
 		wp_schedule_single_event( $time + 30, 'pronamic_ideal_check_transaction_status', array( 'payment_id' => $payment->get_id(), 'seconds' => 30 ) );
 	}
