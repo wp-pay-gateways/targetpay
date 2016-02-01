@@ -3,8 +3,9 @@
 /**
  * Title: TargetPay gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.0.0
  */
@@ -59,7 +60,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 
 	public function get_issuer_field() {
 		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $this->get_payment_method() ) {
-			return array (
+			return array(
 				'id'       => 'pronamic_ideal_issuer_id',
 				'name'     => 'pronamic_ideal_issuer_id',
 				'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
@@ -120,8 +121,11 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 			$this->set_error( $this->client->get_error() );
 		}
 
-		// Schedule transaction status request
-		// @since 1.0.3
+		/*
+		 * Schedule transaction status request
+		 *
+		 * @since 1.0.3
+		 */
 		$time = time();
 		wp_schedule_single_event( $time + 30, 'pronamic_ideal_check_transaction_status', array( 'payment_id' => $payment->get_id(), 'seconds' => 30 ) );
 	}

@@ -3,8 +3,9 @@
 /**
  * Title: TargetPay gateway settings
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.0
  * @since 1.1.0
@@ -22,7 +23,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_Gatewa
 			'methods' => array( 'targetpay' ),
 		);
 
-		// Return
 		return $sections;
 	}
 
@@ -37,7 +37,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_Gatewa
 			'description' => __( 'De layoutcode waarop de betaling geboekt moet worden. Zie subaccounts.', 'pronamic_ideal' ),
 		);
 
-		// Return
 		return $fields;
 	}
 }
