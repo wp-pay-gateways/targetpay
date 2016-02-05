@@ -56,6 +56,9 @@ module.exports = function( grunt ) {
 		phpcpd: {
 			application: {
 				dir: 'src'
+			},
+			options: {
+				bin: 'vendor/bin/phpcpd'
 			}
 		}
 	} );
