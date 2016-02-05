@@ -21,6 +21,7 @@ module.exports = function( grunt ) {
 				],
 			},
 			options: {
+				bin: 'vendor/bin/phpcs',
 				standard: 'phpcs.ruleset.xml',
 				showSniffCodes: true
 			}
@@ -55,6 +56,9 @@ module.exports = function( grunt ) {
 		phpcpd: {
 			application: {
 				dir: 'src'
+			},
+			options: {
+				bin: 'vendor/bin/phpcpd'
 			}
 		}
 	} );

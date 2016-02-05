@@ -17,7 +17,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_RemoteGetTest extends PHPUnit_Framework
 	 * @return string
 	 */
 	public function pre_http_request( $preempt, $request, $url ) {
-		$response = file_get_contents( __DIR__ . '/Mock/GetIssuersXml200.http' );
+		$response = file_get_contents( dirname( __FILE__ ) . '/Mock/GetIssuersXml200.http' );
 
 		$processedResponse = WP_Http::processResponse( $response );
 
