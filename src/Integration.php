@@ -30,10 +30,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Integration extends Pronamic_WP_Pay_Gat
 		return 'Pronamic_WP_Pay_Gateways_TargetPay_Settings';
 	}
 
-	public function get_gateway_class() {
-		return 'Pronamic_WP_Pay_Gateways_TargetPay_Gateway';
-	}
-
 	/**
 	 * Get required settings for this integration.
 	 *

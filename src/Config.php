@@ -11,4 +11,8 @@
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_Config extends Pronamic_WP_Pay_GatewayConfig {
 	public $layoutcode;
+
+	public function get_gateway_class() {
+		return 'Pronamic_WP_Pay_Gateways_TargetPay_Gateway';
+	}
 }
