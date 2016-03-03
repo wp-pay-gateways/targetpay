@@ -21,6 +21,10 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_Gatewa
 		$sections['targetpay'] = array(
 			'title'   => __( 'TargetPay', 'pronamic_ideal' ),
 			'methods' => array( 'targetpay' ),
+			'description' => sprintf(
+				__( 'Account details are provided by %s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
+				__( 'TargetPay', 'pronamic_ideal' )
+			),
 		);
 
 		return $sections;
@@ -34,7 +38,18 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_Gatewa
 			'meta_key'    => '_pronamic_gateway_targetpay_layoutcode',
 			'title'       => __( 'Layout Code', 'pronamic_ideal' ),
 			'type'        => 'text',
-			'description' => __( 'De layoutcode waarop de betaling geboekt moet worden. Zie subaccounts.', 'pronamic_ideal' ),
+			'tooltip'     => __( 'Layout code as mentioned at <strong>Sub accounts</strong> in the TargetPay dashboard.', 'pronamic_ideal' ),
+		);
+
+		// Transaction feedback
+		$fields[] = array(
+			'section'     => 'targetpay',
+			'title'       => __( 'Transaction feedback', 'pronamic_ideal' ),
+			'type'        => 'description',
+			'html'        => sprintf(
+				'<span class="dashicons dashicons-yes pronamic-pay-yes"></span> %s',
+				__( 'Payment status updates will be processed without any additional configuration.', 'pronamic_ideal' )
+			),
 		);
 
 		return $fields;
