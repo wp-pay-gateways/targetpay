@@ -14,6 +14,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Integration extends Pronamic_WP_Pay_Gat
 	public function __construct() {
 		$this->id            = 'targetpay-ideal';
 		$this->name          = 'TargetPay - iDEAL';
+		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
 		$this->dashboard_url = 'https://www.targetpay.com/login';
 		$this->provider      = 'targetpay';
 	}
