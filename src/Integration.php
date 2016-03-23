@@ -7,13 +7,14 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.0.7
+ * @version 1.0.8
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_Integration extends Pronamic_WP_Pay_Gateways_AbstractIntegration {
 	public function __construct() {
 		$this->id            = 'targetpay-ideal';
 		$this->name          = 'TargetPay - iDEAL';
+		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
 		$this->dashboard_url = 'https://www.targetpay.com/login';
 		$this->provider      = 'targetpay';
 	}

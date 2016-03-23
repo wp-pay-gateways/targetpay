@@ -1,6 +1,6 @@
 {
   "name": "targetpay",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TargetPay driver for the WordPress payment processing library.",
   "repository": {
     "type": "git",
