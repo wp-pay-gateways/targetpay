@@ -7,6 +7,10 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.0.8] - 2016-03-23
+- Updated gateway settings.
+- Added product URL.
+
 ## [1.0.7] - 2016-03-02
 - Added get settings function.
 - Use iDEAL payment method also if none set in issuer field
@@ -36,7 +40,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.7...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...HEAD
+[1.0.8]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.6...1.0.7
 [1.0.6]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.5...1.0.6
 [1.0.5]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.4...1.0.5

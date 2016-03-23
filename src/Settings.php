@@ -7,8 +7,8 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.0
- * @since 1.1.0
+ * @version 1.0.8
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_GatewaySettings {
 	public function __construct() {
