@@ -104,12 +104,12 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::start()
 	 */
-	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
+	public function start( Pronamic_Pay_Payment $payment ) {
 		$parameters = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
 		$parameters->rtlo              = $this->config->layoutcode;
-		$parameters->bank              = $data->get_issuer_id();
-		$parameters->description       = $data->get_description();
-		$parameters->amount            = $data->get_amount();
+		$parameters->bank              = $payment->get_issuer();
+		$parameters->description       = $payment->get_description();
+		$parameters->amount            = $payment->get_amount();
 		$parameters->return_url        = $payment->get_return_url();
 		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
