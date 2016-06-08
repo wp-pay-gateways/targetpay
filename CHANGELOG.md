@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.0.9] - 2016-06-08
+- Simplified the gateay payment start function.
+
 ## [1.0.8] - 2016-03-23
 - Updated gateway settings.
 - Added product URL.
@@ -40,7 +43,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.9...HEAD
+[1.0.9]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...1.0.9
 [1.0.8]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.6...1.0.7
 [1.0.6]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.5...1.0.6
