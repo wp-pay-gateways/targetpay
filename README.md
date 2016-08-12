@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/targetpay/downloads.svg)](https://packagist.org/packages/wp-pay-gateways/targetpay)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/targetpay/v/unstable.svg)](https://packagist.org/packages/wp-pay-gateways/targetpay)
 [![License](https://poser.pugx.org/wp-pay-gateways/targetpay/license.svg)](https://packagist.org/packages/wp-pay-gateways/targetpay)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 ## Documentation
 
