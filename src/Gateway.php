@@ -94,7 +94,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 */
 	public function get_supported_payment_methods() {
 		return array(
-			Pronamic_WP_Pay_PaymentMethods::IDEAL => Pronamic_WP_Pay_PaymentMethods::IDEAL,
+			Pronamic_WP_Pay_PaymentMethods::IDEAL,
 		);
 	}
 
