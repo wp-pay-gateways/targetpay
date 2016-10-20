@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.0.9
+ * @version 1.1.0
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway {
@@ -27,6 +27,10 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 */
 	public function __construct( Pronamic_WP_Pay_Gateways_TargetPay_Config $config ) {
 		parent::__construct( $config );
+
+		$this->supports = array(
+			'payment_status_request',
+		);
 
 		$this->set_method( Pronamic_WP_Pay_Gateway::METHOD_HTTP_REDIRECT );
 		$this->set_has_feedback( true );
@@ -94,7 +98,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 	 */
 	public function get_supported_payment_methods() {
 		return array(
-			Pronamic_WP_Pay_PaymentMethods::IDEAL => Pronamic_WP_Pay_PaymentMethods::IDEAL,
+			Pronamic_WP_Pay_PaymentMethods::IDEAL,
 		);
 	}
 
@@ -123,14 +127,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway
 		} else {
 			$this->set_error( $this->client->get_error() );
 		}
-
-		/*
-		 * Schedule transaction status request
-		 *
-		 * @since 1.0.3
-		 */
-		$time = time();
-		wp_schedule_single_event( $time + 30, 'pronamic_ideal_check_transaction_status', array( 'payment_id' => $payment->get_id(), 'seconds' => 30 ) );
 	}
 
 	/////////////////////////////////////////////////
