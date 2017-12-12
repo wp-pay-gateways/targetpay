@@ -3,11 +3,11 @@
 /**
  * Title: TargetPay gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2017
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.0
+ * @version 1.1.1
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Pronamic_WP_Pay_Gateway {
