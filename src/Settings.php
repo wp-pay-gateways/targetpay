@@ -22,7 +22,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends Pronamic_WP_Pay_Gatewa
 			'title'   => __( 'TargetPay', 'pronamic_ideal' ),
 			'methods' => array( 'targetpay' ),
 			'description' => sprintf(
-				__( 'Account details are provided by %s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
+				__( 'Account details are provided by %1$s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
 				__( 'TargetPay', 'pronamic_ideal' )
 			),
 		);
