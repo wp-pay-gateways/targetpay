@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.1.1] - 2017-12-12
+- WordPress Coding Standards optimizations.
+
 ## [1.1.0] - 2016-10-20
 - Added `payment_status_request` feature support.
 - Removed schedule status check event, this will be part of the Pronamic iDEAL plugin.
@@ -47,8 +50,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.0...HEAD
-[1.1.0]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...1.1.0
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.9...1.1.0
 [1.0.9]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...1.0.9
 [1.0.8]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.7...1.0.8
 [1.0.7]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.6...1.0.7

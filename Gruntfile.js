@@ -22,18 +22,13 @@ module.exports = function( grunt ) {
 			},
 			options: {
 				bin: 'vendor/bin/phpcs',
-				standard: 'phpcs.ruleset.xml',
+				standard: 'phpcs.xml.dist',
 				showSniffCodes: true
 			}
 		},
 
 		// PHPLint
 		phplint: {
-			options: {
-				phpArgs: {
-					'-lf': null
-				}
-			},
 			all: [
 				'**/*.php',
 				'!node_modules/**',
@@ -47,6 +42,7 @@ module.exports = function( grunt ) {
 				dir: 'src'
 			},
 			options: {
+				bin: 'vendor/bin/phpmd',
 				reportFormat: 'xml',
 				rulesets: 'phpmd.ruleset.xml'
 			}
@@ -59,6 +55,16 @@ module.exports = function( grunt ) {
 			},
 			options: {
 				bin: 'vendor/bin/phpcpd'
+			}
+		},
+
+		// PHPUnit
+		phpunit: {
+			options: {
+				bin: 'vendor/bin/phpunit'
+			},
+			application: {
+
 			}
 		}
 	} );

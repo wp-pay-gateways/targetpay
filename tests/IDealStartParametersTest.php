@@ -3,18 +3,19 @@
 /**
  * Title: TargetPay iDEAL start parameters test
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2017
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.0.0
+ * @version 1.1.1
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParametersTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test iDEAL start parameters.
 	 */
 	public function test() {
-		$parameters = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
+		$parameters                    = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
 		$parameters->rtlo              = '12345';
 		$parameters->bank              = 'test';
 		$parameters->description       = 'Description';
