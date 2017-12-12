@@ -21,7 +21,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_RemoteGetTest extends PHPUnit_Framework
 
 		$processedResponse = WP_Http::processResponse( $response );
 
-		$processedHeaders = WP_Http::processHeaders( $processedResponse['headers'], $url );
+		$processedHeaders         = WP_Http::processHeaders( $processedResponse['headers'], $url );
 		$processedHeaders['body'] = $processedResponse['body'];
 
 		return $processedHeaders;
