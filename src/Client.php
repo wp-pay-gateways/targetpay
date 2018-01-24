@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Util;
 
 /**
  * Title: TargetPay gateway
@@ -109,7 +110,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	//////////////////////////////////////////////////
 
 	private function remote_get( $url ) {
-		return Pronamic_WP_Util::remote_get_body( $url, 200 );
+		return Util::remote_get_body( $url, 200 );
 	}
 
 	//////////////////////////////////////////////////
@@ -126,7 +127,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	 * @param string $cinfo_in_callback https://www.targetpay.com/info/directdebit-docu
 	 */
 	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters $parameters ) {
-		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
+		$url = Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
 
 		$data = self::remote_get( $url );
 
@@ -165,13 +166,13 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	public function check_status( $rtlo, $transaction_id, $once, $test ) {
 		$result = null;
 
-		$url = Pronamic_WP_Util::build_url(
+		$url = Util::build_url(
 			self::URL_CHECK_TRANSACTION,
 			array(
 				'rtlo'  => $rtlo,
 				'trxid' => $transaction_id,
-				'once'  => Pronamic_WP_Util::to_numeric_boolean( $once ),
-				'test'  => Pronamic_WP_Util::to_numeric_boolean( $test ),
+				'once'  => Util::to_numeric_boolean( $once ),
+				'test'  => Util::to_numeric_boolean( $test ),
 			)
 		);
 
@@ -199,7 +200,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 		$data = self::remote_get( $url );
 
 		if ( false !== $data ) {
-			$xml = Pronamic_WP_Util::simplexml_load_string( $data );
+			$xml = Util::simplexml_load_string( $data );
 
 			if ( is_wp_error( $xml ) ) {
 				$this->error = $xml;
