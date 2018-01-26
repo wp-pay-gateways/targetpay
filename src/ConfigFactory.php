@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\GatewayConfigFactory;
 
 /**
  * Title: TargetPay config factory
@@ -10,7 +11,7 @@
  * @version 1.1.1
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_ConfigFactory extends Pronamic_WP_Pay_GatewayConfigFactory {
+class Pronamic_WP_Pay_Gateways_TargetPay_ConfigFactory extends GatewayConfigFactory {
 	public function get_config( $post_id ) {
 		$config = new Pronamic_WP_Pay_Gateways_TargetPay_Config();
 

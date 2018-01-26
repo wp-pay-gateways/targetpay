@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\XML\Security;
 use Pronamic\WordPress\Pay\Util;
 
 /**
@@ -208,8 +209,8 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				$issuers = array();
 
 				foreach ( $xml->issuer as $xml_issuer ) {
-					$id   = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer['id'] );
-					$name = Pronamic_WP_Pay_XML_Security::filter( $xml_issuer );
+					$id   = Security::filter( $xml_issuer['id'] );
+					$name = Security::filter( $xml_issuer );
 
 					$issuers[ $id ] = $name;
 				}

@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
 
 /**
  * Title: TargetPay integration
@@ -10,7 +11,7 @@
  * @version 1.0.8
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_Integration extends Pronamic_WP_Pay_Gateways_AbstractIntegration {
+class Pronamic_WP_Pay_Gateways_TargetPay_Integration extends AbstractIntegration {
 	public function __construct() {
 		$this->id            = 'targetpay-ideal';
 		$this->name          = 'TargetPay - iDEAL';

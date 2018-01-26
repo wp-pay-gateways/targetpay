@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\Statuses;
 
 /**
  * Title: TargetPay response codes
@@ -91,13 +92,13 @@ class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes {
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
 			case self::OK:
-				return Pronamic_WP_Pay_Statuses::SUCCESS;
+				return Statuses::SUCCESS;
 			case self::TRANSACTION_NOT_COMPLETED:
-				return Pronamic_WP_Pay_Statuses::OPEN;
+				return Statuses::OPEN;
 			case self::TRANSACTION_CANCLLED:
-				return Pronamic_WP_Pay_Statuses::CANCELLED;
+				return Statuses::CANCELLED;
 			case self::TRANSACTION_EXPIRED:
-				return Pronamic_WP_Pay_Statuses::EXPIRED;
+				return Statuses::EXPIRED;
 			default:
 				return null;
 		}
