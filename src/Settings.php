@@ -1,4 +1,7 @@
 <?php
+
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
 use Pronamic\WordPress\Pay\Core\GatewaySettings;
 
 /**
@@ -11,7 +14,7 @@ use Pronamic\WordPress\Pay\Core\GatewaySettings;
  * @version 1.1.1
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_Settings extends GatewaySettings {
+class Settings extends GatewaySettings {
 	public function __construct() {
 		add_filter( 'pronamic_pay_gateway_sections', array( $this, 'sections' ) );
 		add_filter( 'pronamic_pay_gateway_fields', array( $this, 'fields' ) );

@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
 /**
  * Title: Status string parser
  * Description:
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.0.0
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser {
+class StatusStringParser {
 	/**
 	 * Token used by TargetPay to separate some values
 	 *
@@ -24,10 +26,11 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser {
 	 * Parse an TargetPay status string to an object
 	 *
 	 * @param string $string an TargetPay status string
-	 * @return stdClass
+	 *
+	 * @return Status
 	 */
 	public static function parse( $string ) {
-		$status = new Pronamic_WP_Pay_Gateways_TargetPay_Status();
+		$status = new Status();
 
 		$position_space = strpos( $string, ' ' );
 		$position_pipe  = strpos( $string, '|' );

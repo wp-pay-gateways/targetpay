@@ -1,5 +1,7 @@
 <?php
-use Pronamic\WordPress\Pay\Core\Statuses;
+
+use Pronamic\WordPress\Pay\Core\Statuses as Core_Statuses;
+use Pronamic\WordPress\Pay\Gateways\TargetPay\Statuses;
 
 /**
  * Title: TargetPay response codes tests
@@ -15,19 +17,22 @@ class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodesTest extends PHPUnit_Frame
 	 * Test transform
 	 *
 	 * @dataProvider status_matrix_provider
+	 *
+	 * @param $response_code
+	 * @param $expected
 	 */
-	public function test_transform( $responseCode, $expected ) {
-		$status = Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::transform( $responseCode );
+	public function test_transform( $response_code, $expected ) {
+		$status = Statuses::transform( $response_code );
 
 		$this->assertEquals( $expected, $status );
 	}
 
 	public function status_matrix_provider() {
 		return array(
-			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::OK, Statuses::SUCCESS ),
-			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::TRANSACTION_NOT_COMPLETED, Statuses::OPEN ),
-			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::TRANSACTION_CANCLLED, Statuses::CANCELLED ),
-			array( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::TRANSACTION_EXPIRED, Statuses::EXPIRED ),
+			array( Statuses::OK, Core_Statuses::SUCCESS ),
+			array( Statuses::TRANSACTION_NOT_COMPLETED, Core_Statuses::OPEN ),
+			array( Statuses::TRANSACTION_CANCLLED, Core_Statuses::CANCELLED ),
+			array( Statuses::TRANSACTION_EXPIRED, Core_Statuses::EXPIRED ),
 			array( 'not existing response code', null ),
 		);
 	}

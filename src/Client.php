@@ -1,6 +1,11 @@
 <?php
+
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
 use Pronamic\WordPress\Pay\Core\XML\Security;
-use Pronamic\WordPress\Pay\Util;
+use Pronamic\WordPress\Pay\Util as Pay_Util;
+use stdClass;
+use WP_Error;
 
 /**
  * Title: TargetPay gateway
@@ -8,11 +13,11 @@ use Pronamic\WordPress\Pay\Util;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.0.0
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_Client {
+class Client {
 	/**
 	 * URL for issuers in Dutch language
 	 *
@@ -111,7 +116,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	//////////////////////////////////////////////////
 
 	private function remote_get( $url ) {
-		return Util::remote_get_body( $url, 200 );
+		return Pay_Util::remote_get_body( $url, 200 );
 	}
 
 	//////////////////////////////////////////////////
@@ -119,16 +124,12 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	/**
 	 * Start transaction
 	 *
-	 * @param string $rtlo
-	 * @param string $bank
-	 * @param string $description
-	 * @param float $amount
-	 * @param string $returnurl
-	 * @param string $reporturl
-	 * @param string $cinfo_in_callback https://www.targetpay.com/info/directdebit-docu
+	 * @param IDealStartParameters $parameters
+	 *
+	 * @return stdClass
 	 */
-	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters $parameters ) {
-		$url = Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
+	public function start_transaction( IDealStartParameters $parameters ) {
+		$url = Pay_Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
 
 		$data = self::remote_get( $url );
 
@@ -147,7 +148,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 				$code        = $status;
 				$description = substr( $data, 7 );
 
-				$error = new Pronamic_WP_Pay_Gateways_TargetPay_Error( $code, $description );
+				$error = new Error( $code, $description );
 
 				$this->error = new WP_Error( 'targetpay_error', (string) $error, $error );
 			}
@@ -163,24 +164,26 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 	 * @param string $transaction_id
 	 * @param string $once
 	 * @param string $test
+	 *
+	 * @return null|Status
 	 */
 	public function check_status( $rtlo, $transaction_id, $once, $test ) {
 		$result = null;
 
-		$url = Util::build_url(
+		$url = Pay_Util::build_url(
 			self::URL_CHECK_TRANSACTION,
 			array(
 				'rtlo'  => $rtlo,
 				'trxid' => $transaction_id,
-				'once'  => Util::to_numeric_boolean( $once ),
-				'test'  => Util::to_numeric_boolean( $test ),
+				'once'  => Pay_Util::boolean_to_numeric( $once ),
+				'test'  => Pay_Util::boolean_to_numeric( $test ),
 			)
 		);
 
 		$data = self::remote_get( $url );
 
 		if ( false !== $data ) {
-			$result = Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser::parse( $data );
+			$result = StatusStringParser::parse( $data );
 		}
 
 		return $result;
@@ -201,7 +204,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Client {
 		$data = self::remote_get( $url );
 
 		if ( false !== $data ) {
-			$xml = Util::simplexml_load_string( $data );
+			$xml = Pay_Util::simplexml_load_string( $data );
 
 			if ( is_wp_error( $xml ) ) {
 				$this->error = $xml;

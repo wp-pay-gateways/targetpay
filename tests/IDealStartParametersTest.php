@@ -1,5 +1,7 @@
 <?php
 
+use Pronamic\WordPress\Pay\Gateways\TargetPay\IDealStartParameters;
+
 /**
  * Title: TargetPay iDEAL start parameters test
  * Description:
@@ -15,7 +17,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParametersTest extends PHPUni
 	 * Test iDEAL start parameters.
 	 */
 	public function test() {
-		$parameters                    = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
+		$parameters                    = new IDealStartParameters();
 		$parameters->rtlo              = '12345';
 		$parameters->bank              = 'test';
 		$parameters->description       = 'Description';

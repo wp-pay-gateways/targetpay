@@ -1,5 +1,7 @@
 <?php
 
+use Pronamic\WordPress\Pay\Gateways\TargetPay\StatusStringParser;
+
 /**
  * Title: TargetPay status string parser test
  * Description:
@@ -14,9 +16,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParserTest extends PHPUnit_
 	public function test_parse_status_ok() {
 		$status_string = '000000 OK';
 
-		$status = Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser::parse( $status_string );
+		$status = StatusStringParser::parse( $status_string );
 
-		$this->assertInstanceOf( 'Pronamic_WP_Pay_Gateways_TargetPay_Status', $status );
+		$this->assertInstanceOf( 'Pronamic\WordPress\Pay\Gateways\TargetPay\Status', $status );
 
 		$this->assertEquals( '000000', $status->code );
 		$this->assertEquals( 'OK', $status->description );
@@ -25,9 +27,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParserTest extends PHPUnit_
 	public function test_parse_status_ok_cinfo() {
 		$status_string = '00000 OK|123456789|Pronamic|Drachten';
 
-		$status = Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser::parse( $status_string );
+		$status = StatusStringParser::parse( $status_string );
 
-		$this->assertInstanceOf( 'Pronamic_WP_Pay_Gateways_TargetPay_Status', $status );
+		$this->assertInstanceOf( 'Pronamic\WordPress\Pay\Gateways\TargetPay\Status', $status );
 
 		$this->assertEquals( '00000', $status->code );
 		$this->assertEquals( 'OK', $status->description );
@@ -39,9 +41,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParserTest extends PHPUnit_
 	public function test_parse_status_tp0010() {
 		$status_string = 'TP0010 Transaction has not been completed, try again later';
 
-		$status = Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParser::parse( $status_string );
+		$status = StatusStringParser::parse( $status_string );
 
-		$this->assertInstanceOf( 'Pronamic_WP_Pay_Gateways_TargetPay_Status', $status );
+		$this->assertInstanceOf( 'Pronamic\WordPress\Pay\Gateways\TargetPay\Status', $status );
 
 		$this->assertEquals( 'TP0010', $status->code );
 		$this->assertEquals( 'Transaction has not been completed, try again later', $status->description );

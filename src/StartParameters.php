@@ -1,5 +1,10 @@
 <?php
-use Pronamic\WordPress\Pay\Core\Util;
+
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use ArrayIterator;
+use IteratorAggregate;
+use Pronamic\WordPress\Pay\Core\Util as Core_Util;
 
 /**
  * Title: TargetPay start parameters
@@ -7,11 +12,11 @@ use Pronamic\WordPress\Pay\Core\Util;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.0.0
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_StartParameters implements IteratorAggregate {
+class StartParameters implements IteratorAggregate {
 	/**
 	 * Layoutcode
 	 *
@@ -81,7 +86,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_StartParameters implements IteratorAggr
 		return array(
 			'rtlo'        => $this->rtlo,
 			'description' => $this->description,
-			'amount'      => Util::amount_to_cents( $this->amount ),
+			'amount'      => Core_Util::amount_to_cents( $this->amount ),
 			'country'     => $this->country,
 			'lang'        => $this->language,
 			'returnurl'   => $this->return_url,

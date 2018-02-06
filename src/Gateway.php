@@ -1,6 +1,10 @@
 <?php
-use Pronamic\WordPress\Pay\Core\Gateway;
+
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use Pronamic\WordPress\Pay\Core\Gateway as Core_Gateway;
 use Pronamic\WordPress\Pay\Core\PaymentMethods;
+use Pronamic\WordPress\Pay\Payments\Payment;
 
 /**
  * Title: TargetPay gateway
@@ -8,11 +12,11 @@ use Pronamic\WordPress\Pay\Core\PaymentMethods;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.1.1
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
+class Gateway extends Core_Gateway {
 	/**
 	 * Slug of this gateway
 	 *
@@ -25,9 +29,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
 	/**
 	 * Constructs and initializes an TargetPay gateway
 	 *
-	 * @param Pronamic_WP_Pay_Gateways_TargetPay_Config $config
+	 * @param Config $config
 	 */
-	public function __construct( Pronamic_WP_Pay_Gateways_TargetPay_Config $config ) {
+	public function __construct( Config $config ) {
 		parent::__construct( $config );
 
 		$this->supports = array(
@@ -39,7 +43,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
 		$this->set_amount_minimum( 0.84 );
 		$this->set_slug( self::SLUG );
 
-		$this->client = new Pronamic_WP_Pay_Gateways_TargetPay_Client();
+		$this->client = new Client();
 	}
 
 	/////////////////////////////////////////////////
@@ -109,10 +113,12 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
 	/**
 	 * Start
 	 *
-	 * @see Pronamic_WP_Pay_Gateway::start()
+	 * @see Core_Gateway::start()
+	 *
+	 * @param Payment $payment
 	 */
-	public function start( Pronamic_Pay_Payment $payment ) {
-		$parameters                    = new Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters();
+	public function start( Payment $payment ) {
+		$parameters                    = new IDealStartParameters();
 		$parameters->rtlo              = $this->config->layoutcode;
 		$parameters->bank              = $payment->get_issuer();
 		$parameters->description       = $payment->get_description();
@@ -136,9 +142,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
 	/**
 	 * Update status of the specified payment
 	 *
-	 * @param Pronamic_Pay_Payment $payment
+	 * @param Payment $payment
 	 */
-	public function update_status( Pronamic_Pay_Payment $payment ) {
+	public function update_status( Payment $payment ) {
 		$status = $this->client->check_status(
 			$this->config->layoutcode,
 			$payment->get_transaction_id(),
@@ -147,9 +153,9 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Gateway extends Gateway {
 		);
 
 		if ( $status ) {
-			$payment->set_status( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::transform( $status->code ) );
+			$payment->set_status( Statuses::transform( $status->code ) );
 
-			if ( Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes::OK === $status->code ) {
+			if ( Statuses::OK === $status->code ) {
 				$payment->set_consumer_name( $status->account_name );
 				$payment->set_consumer_account_number( $status->account_number );
 				$payment->set_consumer_city( $status->account_city );
