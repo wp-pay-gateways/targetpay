@@ -27,8 +27,6 @@ class Status {
 	 */
 	public $description;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Account number
 	 *
@@ -50,8 +48,6 @@ class Status {
 	 */
 	public $account_city;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initializes an TargetPay status object
 	 */
@@ -59,11 +55,7 @@ class Status {
 
 	}
 
-	//////////////////////////////////////////////////
-
 	// @todo getters and setters
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Create an string representation of this TargetPay error object

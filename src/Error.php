@@ -27,8 +27,6 @@ class Error {
 	 */
 	private $description;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initializes an TargetPay client object
 	 *
@@ -40,11 +38,7 @@ class Error {
 		$this->description = $description;
 	}
 
-	//////////////////////////////////////////////////
-
 	// @todo getters and setters
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Create an string representation of this TargetPay error object

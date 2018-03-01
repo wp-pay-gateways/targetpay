@@ -29,16 +29,12 @@ class IDealStartParameters extends StartParameters {
 	 */
 	public $cinfo_in_callback;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initialize start parameters
 	 */
 	public function __construct() {
 
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get array

@@ -27,8 +27,6 @@ class SofortStartParameters extends StartParameters {
 	 */
 	public $user_ip;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get array
 	 *

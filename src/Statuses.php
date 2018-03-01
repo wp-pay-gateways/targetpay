@@ -85,8 +85,6 @@ class Statuses {
 	 */
 	const LAYOUCODE_NOT_MATCH_TRANSACTION = 'TP0023';
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Transform an TargetPay response code to an more global status
 	 *

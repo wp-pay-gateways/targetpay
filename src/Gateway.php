@@ -24,8 +24,6 @@ class Gateway extends Core_Gateway {
 	 */
 	const SLUG = 'targetpay';
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initializes an TargetPay gateway
 	 *
@@ -46,8 +44,6 @@ class Gateway extends Core_Gateway {
 		$this->client = new Client();
 	}
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Get issuers
 	 *
@@ -67,8 +63,6 @@ class Gateway extends Core_Gateway {
 		return $groups;
 	}
 
-	/////////////////////////////////////////////////
-
 	public function get_issuer_field() {
 		$payment_method = $this->get_payment_method();
 
@@ -84,8 +78,6 @@ class Gateway extends Core_Gateway {
 		}
 	}
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Get payment methods
 	 *
@@ -94,8 +86,6 @@ class Gateway extends Core_Gateway {
 	public function get_payment_methods() {
 		return PaymentMethods::IDEAL;
 	}
-
-	/////////////////////////////////////////////////
 
 	/**
 	 * Get supported payment methods
@@ -107,8 +97,6 @@ class Gateway extends Core_Gateway {
 			PaymentMethods::IDEAL,
 		);
 	}
-
-	/////////////////////////////////////////////////
 
 	/**
 	 * Start
@@ -136,8 +124,6 @@ class Gateway extends Core_Gateway {
 			$this->set_error( $this->client->get_error() );
 		}
 	}
-
-	/////////////////////////////////////////////////
 
 	/**
 	 * Update status of the specified payment

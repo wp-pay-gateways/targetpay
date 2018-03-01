@@ -66,16 +66,12 @@ class StartParameters implements IteratorAggregate {
 	 */
 	public $report_url;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initialize start parameters
 	 */
 	public function __construct() {
 
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get array
@@ -93,8 +89,6 @@ class StartParameters implements IteratorAggregate {
 			'reporturl'   => $this->report_url,
 		);
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get iterator

@@ -32,8 +32,6 @@ class Client {
 	 */
 	const URL_ISSUERS_EN = 'https://www.targetpay.com/ideal/issuers-en.js';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * URL for retrieving issuers in HTL format
 	 *
@@ -47,8 +45,6 @@ class Client {
 	 * @var string
 	 */
 	const URL_ISSUERS_XML = 'https://www.targetpay.com/ideal/getissuers.php?format=xml';
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * URL to start an transaction
@@ -64,16 +60,12 @@ class Client {
 	 */
 	const URL_CHECK_TRANSACTION = 'https://www.targetpay.com/ideal/check';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Token used by TargetPay to separate some values
 	 *
 	 * @var string
 	 */
 	const TOKEN = ' |';
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Status indicator for 'Ok'
@@ -89,16 +81,12 @@ class Client {
 	 */
 	const STATUS_NO_LAYOUT_CODE = 'TP0001';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Error
 	 *
 	 * @var WP_Error
 	 */
 	private $error;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Constructs and initializes an TargetPay client object
@@ -107,19 +95,13 @@ class Client {
 
 	}
 
-	//////////////////////////////////////////////////
-
 	public function get_error() {
 		return $this->error;
 	}
 
-	//////////////////////////////////////////////////
-
 	private function remote_get( $url ) {
 		return Pay_Util::remote_get_body( $url, 200 );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Start transaction
@@ -155,8 +137,6 @@ class Client {
 		}
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Check status
 	 *
@@ -188,8 +168,6 @@ class Client {
 
 		return $result;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get issuers

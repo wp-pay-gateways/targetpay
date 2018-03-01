@@ -20,8 +20,6 @@ class StatusStringParser {
 	 */
 	const TOKEN = ' |';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Parse an TargetPay status string to an object
 	 *

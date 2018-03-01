@@ -22,8 +22,6 @@ class SofortClient {
 	 */
 	const URL_START_TRANSACTION = 'https://www.targetpay.com/directebanking/start';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initializes an TargetPay SOFORT Banking client object
 	 */
@@ -33,8 +31,6 @@ class SofortClient {
 
 	private static function remote_get( $url ) {
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Start transaction
