@@ -1,6 +1,8 @@
 <?php
 
-use Pronamic\WordPress\Pay\Gateways\TargetPay\StatusStringParser;
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use PHPUnit_Framework_TestCase;
 
 /**
  * Title: TargetPay status string parser test
@@ -12,7 +14,7 @@ use Pronamic\WordPress\Pay\Gateways\TargetPay\StatusStringParser;
  * @version 1.1.1
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_StatusStringParserTest extends PHPUnit_Framework_TestCase {
+class StatusStringParserTest extends PHPUnit_Framework_TestCase {
 	public function test_parse_status_ok() {
 		$status_string = '000000 OK';
 

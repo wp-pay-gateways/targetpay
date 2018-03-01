@@ -1,5 +1,10 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use PHPUnit_Framework_TestCase;
+use WP_Http;
+
 /**
  * Title: TargetPay remote get tests
  * Description:
@@ -10,7 +15,7 @@
  * @version 1.1.1
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_RemoteGetTest extends PHPUnit_Framework_TestCase {
+class RemoteGetTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Pre HTTP request
 	 *

@@ -1,6 +1,6 @@
 <?php
 
-use Pronamic\WordPress\Pay\Gateways\TargetPay\IDealStartParameters;
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
 /**
  * Title: TargetPay iDEAL start parameters test
@@ -12,7 +12,7 @@ use Pronamic\WordPress\Pay\Gateways\TargetPay\IDealStartParameters;
  * @version 1.1.1
  * @since 1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParametersTest extends PHPUnit_Framework_TestCase {
+class IDealStartParametersTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test iDEAL start parameters.
 	 */
