@@ -1,16 +1,20 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use Pronamic\WordPress\Pay\Core\Util as Core_Util;
+
 /**
  * Title: TargetPay iDEAL start parameters
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters extends Pronamic_WP_Pay_Gateways_TargetPay_StartParameters {
+class IDealStartParameters extends StartParameters {
 	/**
 	 * Bank
 	 *
@@ -25,16 +29,12 @@ class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters extends Pronamic_W
 	 */
 	public $cinfo_in_callback;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initialize start parameters
 	 */
 	public function __construct() {
 
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get array
@@ -45,7 +45,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_IDealStartParameters extends Pronamic_W
 		$array = parent::get_array();
 
 		$array['bank']              = $this->bank;
-		$array['cinfo_in_callback'] = Pronamic_WP_Pay_Util::to_numeric_boolean( $this->cinfo_in_callback );
+		$array['cinfo_in_callback'] = Core_Util::boolean_to_numeric( $this->cinfo_in_callback );
 
 		return $array;
 	}

@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [2.0.0] - 2018-05-11
+- Switched to PHP namespaces.
+
 ## [1.1.1] - 2017-12-12
 - WordPress Coding Standards optimizations.
 
@@ -50,7 +53,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.1...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.1...2.0.0
 [1.1.1]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.9...1.1.0
 [1.0.9]: https://github.com/wp-pay-gateways/targetpay/compare/1.0.8...1.0.9

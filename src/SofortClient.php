@@ -1,24 +1,26 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use Pronamic\WordPress\Pay\Util as Pay_Util;
+
 /**
  * Title: TargetPay SOFORT Banking client
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_SofortClient {
+class SofortClient {
 	/**
 	 * URL to start an transaction
 	 *
 	 * @var string
 	 */
 	const URL_START_TRANSACTION = 'https://www.targetpay.com/directebanking/start';
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Constructs and initializes an TargetPay SOFORT Banking client object
@@ -27,15 +29,16 @@ class Pronamic_WP_Pay_Gateways_TargetPay_SofortClient {
 
 	}
 
-	//////////////////////////////////////////////////
+	private static function remote_get( $url ) {
+	}
 
 	/**
 	 * Start transaction
 	 *
-	 * @param Pronamic_WP_Pay_Gateways_TargetPay_Sofort_StartParameters $parameters
+	 * @param SofortStartParameters $parameters
 	 */
-	public function start_transaction( Pronamic_WP_Pay_Gateways_TargetPay_SofortStartParameters $parameters ) {
-		$url = Pronamic_WP_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
+	public function start_transaction( SofortStartParameters $parameters ) {
+		$url = Pay_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
 
 		$data = self::remote_get( $url );
 

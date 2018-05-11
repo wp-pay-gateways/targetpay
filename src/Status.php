@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
 /**
  * Title: TargetPay status
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_Status {
+class Status {
 	/**
 	 * Code
 	 *
@@ -24,8 +26,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Status {
 	 * @var string
 	 */
 	public $description;
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Account number
@@ -48,8 +48,6 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Status {
 	 */
 	public $account_city;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and initializes an TargetPay status object
 	 */
@@ -57,11 +55,7 @@ class Pronamic_WP_Pay_Gateways_TargetPay_Status {
 
 	}
 
-	//////////////////////////////////////////////////
-
 	// @todo getters and setters
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Create an string representation of this TargetPay error object

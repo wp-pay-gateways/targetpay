@@ -1,16 +1,20 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
+use Pronamic\WordPress\Pay\Core\Statuses as Core_Statuses;
+
 /**
  * Title: TargetPay response codes
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes {
+class Statuses {
 	/**
 	 * OK
 	 *
@@ -81,23 +85,27 @@ class Pronamic_WP_Pay_Gateways_TargetPay_ResponseCodes {
 	 */
 	const LAYOUCODE_NOT_MATCH_TRANSACTION = 'TP0023';
 
-	/////////////////////////////////////////////////
-
 	/**
 	 * Transform an TargetPay response code to an more global status
 	 *
 	 * @param string $response_code
+	 *
+	 * @return null|string
 	 */
 	public static function transform( $response_code ) {
 		switch ( $response_code ) {
 			case self::OK:
-				return Pronamic_WP_Pay_Statuses::SUCCESS;
+				return Core_Statuses::SUCCESS;
+
 			case self::TRANSACTION_NOT_COMPLETED:
-				return Pronamic_WP_Pay_Statuses::OPEN;
+				return Core_Statuses::OPEN;
+
 			case self::TRANSACTION_CANCLLED:
-				return Pronamic_WP_Pay_Statuses::CANCELLED;
+				return Core_Statuses::CANCELLED;
+
 			case self::TRANSACTION_EXPIRED:
-				return Pronamic_WP_Pay_Statuses::EXPIRED;
+				return Core_Statuses::EXPIRED;
+
 			default:
 				return null;
 		}

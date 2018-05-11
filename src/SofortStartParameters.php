@@ -1,16 +1,18 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
+
 /**
  * Title: TargetPay SOFORT Banking start parameters
  * Description:
- * Copyright: Copyright (c) 2005 - 2017
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Gateways_TargetPay_SofortStartParameters extends Pronamic_WP_Pay_Gateways_TargetPay_StartParameters {
+class SofortStartParameters extends StartParameters {
 	/**
 	 * Type
 	 *
@@ -25,14 +27,12 @@ class Pronamic_WP_Pay_Gateways_TargetPay_SofortStartParameters extends Pronamic_
 	 */
 	public $user_ip;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get array
 	 *
 	 * @rerturn array
 	 */
-	protected function get_array() {
+	public function get_array() {
 		$array = parent::get_array();
 
 		$array['userip'] = $this->user_ip;
