@@ -25,6 +25,13 @@ class Gateway extends Core_Gateway {
 	const SLUG = 'targetpay';
 
 	/**
+	 * Client.
+	 *
+	 * @var Client
+	 */
+	protected $client;
+
+	/**
 	 * Constructs and initializes an TargetPay gateway
 	 *
 	 * @param Config $config
