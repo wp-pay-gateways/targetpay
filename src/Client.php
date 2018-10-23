@@ -2,8 +2,8 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
+use Pronamic\WordPress\Pay\Core\Util;
 use Pronamic\WordPress\Pay\Core\XML\Security;
-use Pronamic\WordPress\Pay\Util as Pay_Util;
 use stdClass;
 use WP_Error;
 
@@ -112,7 +112,7 @@ class Client {
 	 * @return string|WP_Error
 	 */
 	private function remote_get( $url ) {
-		return Pay_Util::remote_get_body( $url, 200 );
+		return Util::remote_get_body( $url, 200 );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class Client {
 	 * @return stdClass
 	 */
 	public function start_transaction( IDealStartParameters $parameters ) {
-		$url = Pay_Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
+		$url = Util::build_url( self::URL_START_TRANSACTION, $parameters->get_array() );
 
 		$data = self::remote_get( $url );
 
@@ -162,13 +162,13 @@ class Client {
 	public function check_status( $rtlo, $transaction_id, $once, $test ) {
 		$result = null;
 
-		$url = Pay_Util::build_url(
+		$url = Util::build_url(
 			self::URL_CHECK_TRANSACTION,
 			array(
 				'rtlo'  => $rtlo,
 				'trxid' => $transaction_id,
-				'once'  => Pay_Util::boolean_to_numeric( $once ),
-				'test'  => Pay_Util::boolean_to_numeric( $test ),
+				'once'  => Util::boolean_to_numeric( $once ),
+				'test'  => Util::boolean_to_numeric( $test ),
 			)
 		);
 
@@ -194,7 +194,7 @@ class Client {
 		$data = self::remote_get( $url );
 
 		if ( false !== $data ) {
-			$xml = Pay_Util::simplexml_load_string( $data );
+			$xml = Util::simplexml_load_string( $data );
 
 			if ( is_wp_error( $xml ) ) {
 				$this->error = $xml;

@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
-use Pronamic\WordPress\Pay\Util as Pay_Util;
+use Pronamic\WordPress\Pay\Core\Util;
 
 /**
  * Title: TargetPay SOFORT Banking client
@@ -29,16 +29,21 @@ class SofortClient {
 
 	}
 
+	/**
+	 * Remote get.
+	 *
+	 * @param string $url Request URL.
+	 */
 	private static function remote_get( $url ) {
 	}
 
 	/**
 	 * Start transaction
 	 *
-	 * @param SofortStartParameters $parameters
+	 * @param SofortStartParameters $parameters Sofort start parameters.
 	 */
 	public function start_transaction( SofortStartParameters $parameters ) {
-		$url = Pay_Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
+		$url = Util::build_url( self::URL_START_TRANSACTION, (array) $parameters );
 
 		$data = self::remote_get( $url );
 
