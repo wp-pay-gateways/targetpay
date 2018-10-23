@@ -15,13 +15,23 @@ use Pronamic\WordPress\Pay\Core\GatewaySettings;
  * @since   1.0.0
  */
 class Settings extends GatewaySettings {
+	/**
+	 * Settings constructor.
+	 */
 	public function __construct() {
 		add_filter( 'pronamic_pay_gateway_sections', array( $this, 'sections' ) );
 		add_filter( 'pronamic_pay_gateway_fields', array( $this, 'fields' ) );
 	}
 
+	/**
+	 * Settings sections.
+	 *
+	 * @param array $sections Settings sections.
+	 *
+	 * @return array
+	 */
 	public function sections( array $sections ) {
-		// TargetPay
+		// TargetPay.
 		$sections['targetpay'] = array(
 			'title'       => __( 'TargetPay', 'pronamic_ideal' ),
 			'methods'     => array( 'targetpay' ),
@@ -35,8 +45,15 @@ class Settings extends GatewaySettings {
 		return $sections;
 	}
 
+	/**
+	 * Settings fields.
+	 *
+	 * @param array $fields Settings fields.
+	 *
+	 * @return array
+	 */
 	public function fields( array $fields ) {
-		// Layout Code
+		// Layout Code.
 		$fields[] = array(
 			'filter'   => FILTER_SANITIZE_STRING,
 			'section'  => 'targetpay',
@@ -46,7 +63,7 @@ class Settings extends GatewaySettings {
 			'tooltip'  => __( 'Layout code as mentioned at <strong>Sub accounts</strong> in the TargetPay dashboard.', 'pronamic_ideal' ),
 		);
 
-		// Transaction feedback
+		// Transaction feedback.
 		$fields[] = array(
 			'section' => 'targetpay',
 			'title'   => __( 'Transaction feedback', 'pronamic_ideal' ),

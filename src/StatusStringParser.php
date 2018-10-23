@@ -35,7 +35,7 @@ class StatusStringParser {
 
 		if ( false !== $position_space ) {
 			/*
-			 * @see https://www.targetpay.com/info/ideal-docu
+			 * @link https://www.targetpay.com/info/ideal-docu
 			 *
 			 * If the payment is valid the following response will be returned:
 			 * 000000 OK
@@ -67,7 +67,7 @@ class StatusStringParser {
 				$extra = substr( $string, $position_pipe + 1 );
 
 				/*
-				 * @see https://www.targetpay.com/info/directdebit-docu
+				 * @link https://www.targetpay.com/info/directdebit-docu
 				 *
 				 * The response of the ideal/check call will be:
 				 * 00000 OK|accountnumber|accountname|accountcity

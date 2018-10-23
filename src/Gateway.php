@@ -34,7 +34,7 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Constructs and initializes an TargetPay gateway
 	 *
-	 * @param Config $config
+	 * @param Config $config Config.
 	 */
 	public function __construct( Config $config ) {
 		parent::__construct( $config );
@@ -43,7 +43,7 @@ class Gateway extends Core_Gateway {
 			'payment_status_request',
 		);
 
-		$this->set_method( Gateway::METHOD_HTTP_REDIRECT );
+		$this->set_method( self::METHOD_HTTP_REDIRECT );
 		$this->set_slug( self::SLUG );
 
 		$this->client = new Client();
@@ -84,7 +84,7 @@ class Gateway extends Core_Gateway {
 	 *
 	 * @see Core_Gateway::start()
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function start( Payment $payment ) {
 		$parameters                    = new IDealStartParameters();
@@ -109,24 +109,29 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Update status of the specified payment
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function update_status( Payment $payment ) {
+		// Get transaction status.
 		$status = $this->client->check_status(
 			$this->config->layoutcode,
 			$payment->get_transaction_id(),
 			false,
-			Gateway::MODE_TEST === $this->config->mode
+			self::MODE_TEST === $this->config->mode
 		);
 
-		if ( $status ) {
-			$payment->set_status( Statuses::transform( $status->code ) );
+		if ( ! $status ) {
+			return;
+		}
 
-			if ( Statuses::OK === $status->code ) {
-				$payment->set_consumer_name( $status->account_name );
-				$payment->set_consumer_account_number( $status->account_number );
-				$payment->set_consumer_city( $status->account_city );
-			}
+		// Update payment status.
+		$payment->set_status( Statuses::transform( $status->code ) );
+
+		// Set payment consumer details.
+		if ( Statuses::OK === $status->code ) {
+			$payment->set_consumer_name( $status->account_name );
+			$payment->set_consumer_account_number( $status->account_number );
+			$payment->set_consumer_city( $status->account_city );
 		}
 	}
 }

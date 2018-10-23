@@ -19,7 +19,7 @@ class RemoteGetTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Pre HTTP request
 	 *
-	 * @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/class-http.php#L150-L164
+	 * @link https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/class-http.php#L150-L164
 	 *
 	 * @param $preempt
 	 * @param $request

@@ -95,10 +95,22 @@ class Client {
 
 	}
 
+	/**
+	 * Get error.
+	 *
+	 * @return WP_Error
+	 */
 	public function get_error() {
 		return $this->error;
 	}
 
+	/**
+	 * Remote get.
+	 *
+	 * @param string $url URL for GET request.
+	 *
+	 * @return string|WP_Error
+	 */
 	private function remote_get( $url ) {
 		return Pay_Util::remote_get_body( $url, 200 );
 	}
@@ -106,7 +118,7 @@ class Client {
 	/**
 	 * Start transaction
 	 *
-	 * @param IDealStartParameters $parameters
+	 * @param IDealStartParameters $parameters Start parameters.
 	 *
 	 * @return stdClass
 	 */
