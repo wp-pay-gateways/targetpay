@@ -13,7 +13,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.1
  * @since   1.0.0
  */
 class Gateway extends Core_Gateway {
@@ -25,9 +25,16 @@ class Gateway extends Core_Gateway {
 	const SLUG = 'targetpay';
 
 	/**
+	 * Client.
+	 *
+	 * @var Client
+	 */
+	protected $client;
+
+	/**
 	 * Constructs and initializes an TargetPay gateway
 	 *
-	 * @param Config $config
+	 * @param Config $config Config.
 	 */
 	public function __construct( Config $config ) {
 		parent::__construct( $config );
@@ -36,9 +43,7 @@ class Gateway extends Core_Gateway {
 			'payment_status_request',
 		);
 
-		$this->set_method( Gateway::METHOD_HTTP_REDIRECT );
-		$this->set_has_feedback( true );
-		$this->set_amount_minimum( 0.84 );
+		$this->set_method( self::METHOD_HTTP_REDIRECT );
 		$this->set_slug( self::SLUG );
 
 		$this->client = new Client();
@@ -63,21 +68,6 @@ class Gateway extends Core_Gateway {
 		return $groups;
 	}
 
-	public function get_issuer_field() {
-		$payment_method = $this->get_payment_method();
-
-		if ( null === $payment_method || PaymentMethods::IDEAL === $payment_method ) {
-			return array(
-				'id'       => 'pronamic_ideal_issuer_id',
-				'name'     => 'pronamic_ideal_issuer_id',
-				'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
-				'required' => true,
-				'type'     => 'select',
-				'choices'  => $this->get_transient_issuers(),
-			);
-		}
-	}
-
 	/**
 	 * Get supported payment methods
 	 *
@@ -94,14 +84,14 @@ class Gateway extends Core_Gateway {
 	 *
 	 * @see Core_Gateway::start()
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function start( Payment $payment ) {
 		$parameters                    = new IDealStartParameters();
 		$parameters->rtlo              = $this->config->layoutcode;
 		$parameters->bank              = $payment->get_issuer();
 		$parameters->description       = $payment->get_description();
-		$parameters->amount            = $payment->get_amount()->get_amount();
+		$parameters->amount            = $payment->get_total_amount()->get_cents();
 		$parameters->return_url        = $payment->get_return_url();
 		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
@@ -119,24 +109,29 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Update status of the specified payment
 	 *
-	 * @param Payment $payment
+	 * @param Payment $payment Payment.
 	 */
 	public function update_status( Payment $payment ) {
+		// Get transaction status.
 		$status = $this->client->check_status(
 			$this->config->layoutcode,
 			$payment->get_transaction_id(),
 			false,
-			Gateway::MODE_TEST === $this->config->mode
+			self::MODE_TEST === $this->config->mode
 		);
 
-		if ( $status ) {
-			$payment->set_status( Statuses::transform( $status->code ) );
+		if ( ! $status ) {
+			return;
+		}
 
-			if ( Statuses::OK === $status->code ) {
-				$payment->set_consumer_name( $status->account_name );
-				$payment->set_consumer_account_number( $status->account_number );
-				$payment->set_consumer_city( $status->account_city );
-			}
+		// Update payment status.
+		$payment->set_status( Statuses::transform( $status->code ) );
+
+		// Set payment consumer details.
+		if ( Statuses::OK === $status->code ) {
+			$payment->set_consumer_name( $status->account_name );
+			$payment->set_consumer_account_number( $status->account_number );
+			$payment->set_consumer_city( $status->account_city );
 		}
 	}
 }
