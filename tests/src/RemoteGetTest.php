@@ -28,7 +28,7 @@ class RemoteGetTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	public function pre_http_request( $preempt, $request, $url ) {
-		$response = file_get_contents( dirname( __FILE__ ) . '/../Mock/GetIssuersXml200.http', true );
+		$response = file_get_contents( dirname( dirname( __FILE__ ) ) . '/Mock/GetIssuersXml200.http', true );
 
 		$processed_response = WP_Http::processResponse( $response );
 
