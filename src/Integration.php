@@ -27,22 +27,24 @@ class Integration extends AbstractIntegration {
 		return __NAMESPACE__ . '\ConfigFactory';
 	}
 
-	public function get_settings_class() {
-		return __NAMESPACE__ . '\Settings';
-	}
-
 	/**
-	 * Get required settings for this integration.
+	 * Get settings fields.
 	 *
-	 * @see   https://github.com/wp-premium/gravityforms/blob/1.9.16/includes/fields/class-gf-field-multiselect.php#L21-L42
-	 * @since 1.0.7
 	 * @return array
 	 */
-	public function get_settings() {
-		$settings = parent::get_settings();
+	public function get_settings_fields() {
+		$fields = array();
 
-		$settings[] = 'targetpay';
+		// Layout Code.
+		$fields[] = array(
+			'filter'   => FILTER_SANITIZE_STRING,
+			'section'  => 'general',
+			'meta_key' => '_pronamic_gateway_targetpay_layoutcode',
+			'title'    => __( 'Layout Code', 'pronamic_ideal' ),
+			'type'     => 'text',
+			'tooltip'  => __( 'Layout code as mentioned at <strong>Sub accounts</strong> in the TargetPay dashboard.', 'pronamic_ideal' ),
+		);
 
-		return $settings;
+		return $fields;
 	}
 }
