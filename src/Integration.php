@@ -35,6 +35,16 @@ class Integration extends AbstractIntegration {
 	public function get_settings_fields() {
 		$fields = array();
 
+		// Intro.
+		$fields[] = array(
+			'type' => 'html',
+			'html' => sprintf(
+				/* translators: 1: TargetPay */
+				__( 'Account details are provided by %1$s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
+				__( 'TargetPay', 'pronamic_ideal' )
+			),
+		);
+
 		// Layout Code.
 		$fields[] = array(
 			'filter'   => FILTER_SANITIZE_STRING,
