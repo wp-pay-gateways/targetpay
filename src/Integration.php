@@ -37,8 +37,9 @@ class Integration extends AbstractIntegration {
 
 		// Intro.
 		$fields[] = array(
-			'type' => 'html',
-			'html' => sprintf(
+			'section' => 'general',
+			'type'    => 'html',
+			'html'    => sprintf(
 				/* translators: 1: TargetPay */
 				__( 'Account details are provided by %1$s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
 				__( 'TargetPay', 'pronamic_ideal' )
@@ -47,8 +48,8 @@ class Integration extends AbstractIntegration {
 
 		// Layout Code.
 		$fields[] = array(
-			'filter'   => FILTER_SANITIZE_STRING,
 			'section'  => 'general',
+			'filter'   => FILTER_SANITIZE_STRING,
 			'meta_key' => '_pronamic_gateway_targetpay_layoutcode',
 			'title'    => __( 'Layout Code', 'pronamic_ideal' ),
 			'type'     => 'text',
