@@ -23,10 +23,6 @@ class Integration extends AbstractIntegration {
 		$this->provider      = 'targetpay';
 	}
 
-	public function get_config_factory_class() {
-		return __NAMESPACE__ . '\ConfigFactory';
-	}
-
 	/**
 	 * Get settings fields.
 	 *
@@ -57,5 +53,14 @@ class Integration extends AbstractIntegration {
 		);
 
 		return $fields;
+	}
+
+	public function get_config( $post_id ) {
+		$config = new Config();
+
+		$config->layoutcode = get_post_meta( $post_id, '_pronamic_gateway_targetpay_layoutcode', true );
+		$config->mode       = get_post_meta( $post_id, '_pronamic_gateway_mode', true );
+
+		return $config;
 	}
 }
