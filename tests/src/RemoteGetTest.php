@@ -8,7 +8,7 @@ use WP_Http;
 /**
  * Title: TargetPay remote get tests
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -28,7 +28,7 @@ class RemoteGetTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	public function pre_http_request( $preempt, $request, $url ) {
-		$response = file_get_contents( dirname( __FILE__ ) . '/Mock/GetIssuersXml200.http' );
+		$response = file_get_contents( dirname( dirname( __FILE__ ) ) . '/Mock/GetIssuersXml200.http', true );
 
 		$processed_response = WP_Http::processResponse( $response );
 

@@ -9,7 +9,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
 /**
  * Title: TargetPay gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -17,13 +17,6 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  * @since   1.0.0
  */
 class Gateway extends Core_Gateway {
-	/**
-	 * Slug of this gateway
-	 *
-	 * @var string
-	 */
-	const SLUG = 'targetpay';
-
 	/**
 	 * Client.
 	 *
@@ -39,13 +32,14 @@ class Gateway extends Core_Gateway {
 	public function __construct( Config $config ) {
 		parent::__construct( $config );
 
+		$this->set_method( self::METHOD_HTTP_REDIRECT );
+
+		// Supported features.
 		$this->supports = array(
 			'payment_status_request',
 		);
 
-		$this->set_method( self::METHOD_HTTP_REDIRECT );
-		$this->set_slug( self::SLUG );
-
+		// Client.
 		$this->client = new Client();
 	}
 
