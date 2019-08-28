@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [2.0.2] - 2019-08-28
+- Updated packages.
+
 ## [2.0.1] - 2018-12-12
 - Use issuer field from core gateway.
 - Updated deprecated function calls.
@@ -52,12 +55,13 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 - Make sure to use wp-pay/core library for XML filter.
 
 ## [1.0.1] - 2015-03-03
-- Changed WordPress pay core library requirment from ~1.0.0 to >=1.0.0.
+- Changed WordPress pay core library requirment from `~1.0.0` to `>=1.0.0`.
 
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.1...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.2...HEAD
+[2.0.2]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.1...2.0.0
 [1.1.1]: https://github.com/wp-pay-gateways/targetpay/compare/1.1.0...1.1.1
