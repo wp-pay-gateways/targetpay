@@ -95,8 +95,6 @@ class Gateway extends Core_Gateway {
 		if ( $result ) {
 			$payment->set_action_url( $result->url );
 			$payment->set_transaction_id( $result->transaction_id );
-		} else {
-			$this->set_error( $this->client->get_error() );
 		}
 	}
 
