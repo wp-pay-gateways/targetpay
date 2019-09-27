@@ -3,7 +3,7 @@
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
 use PHPUnit_Framework_TestCase;
-use Pronamic\WordPress\Pay\Core\Statuses as Core_Statuses;
+use Pronamic\WordPress\Pay\Payments\PaymentStatus as Core_Statuses;
 
 /**
  * Title: TargetPay response codes tests
