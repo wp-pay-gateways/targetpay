@@ -19,6 +19,7 @@ class Integration extends AbstractIntegration {
 		$this->id            = 'targetpay-ideal';
 		$this->name          = 'TargetPay - iDEAL';
 		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
+		$this->manual_url    = __( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' );
 		$this->dashboard_url = 'https://www.targetpay.com/login';
 		$this->provider      = 'targetpay';
 	}
