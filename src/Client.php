@@ -127,7 +127,7 @@ class Client {
 
 				$error = new Error( $code, $description );
 
-				throw new \Pronamic\WordPress\Pay\GatewayException( 'targetpay', (string) $error, $error );
+				throw new \Exception( 'targetpay', (string) $error );
 			}
 		}
 	}
