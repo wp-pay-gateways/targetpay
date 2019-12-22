@@ -5,7 +5,6 @@ namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 use Pronamic\WordPress\Pay\Core\Util;
 use Pronamic\WordPress\Pay\Core\XML\Security;
 use stdClass;
-use WP_Error;
 
 /**
  * Title: TargetPay gateway
@@ -14,7 +13,7 @@ use WP_Error;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.3
  * @since   1.0.0
  */
 class Client {
@@ -82,13 +81,6 @@ class Client {
 	const STATUS_NO_LAYOUT_CODE = 'TP0001';
 
 	/**
-	 * Error
-	 *
-	 * @var WP_Error
-	 */
-	private $error;
-
-	/**
 	 * Constructs and initializes an TargetPay client object
 	 */
 	public function __construct() {
@@ -96,20 +88,11 @@ class Client {
 	}
 
 	/**
-	 * Get error.
-	 *
-	 * @return WP_Error
-	 */
-	public function get_error() {
-		return $this->error;
-	}
-
-	/**
 	 * Remote get.
 	 *
 	 * @param string $url URL for GET request.
 	 *
-	 * @return string|WP_Error
+	 * @return string
 	 */
 	private function remote_get( $url ) {
 		return Util::remote_get_body( $url, 200 );
@@ -144,7 +127,7 @@ class Client {
 
 				$error = new Error( $code, $description );
 
-				$this->error = new WP_Error( 'targetpay_error', (string) $error, $error );
+				throw new \Exception( 'targetpay', (string) $error );
 			}
 		}
 	}
@@ -196,17 +179,13 @@ class Client {
 		if ( false !== $data ) {
 			$xml = Util::simplexml_load_string( $data );
 
-			if ( is_wp_error( $xml ) ) {
-				$this->error = $xml;
-			} else {
-				$issuers = array();
+			$issuers = array();
 
-				foreach ( $xml->issuer as $xml_issuer ) {
-					$id   = Security::filter( $xml_issuer['id'] );
-					$name = Security::filter( $xml_issuer );
+			foreach ( $xml->issuer as $xml_issuer ) {
+				$id   = Security::filter( $xml_issuer['id'] );
+				$name = Security::filter( $xml_issuer );
 
-					$issuers[ $id ] = $name;
-				}
+				$issuers[ $id ] = $name;
 			}
 		}
 

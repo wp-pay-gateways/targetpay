@@ -13,7 +13,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.1
+ * @version 2.0.3
  * @since   1.0.0
  */
 class Gateway extends Core_Gateway {
@@ -95,8 +95,6 @@ class Gateway extends Core_Gateway {
 		if ( $result ) {
 			$payment->set_action_url( $result->url );
 			$payment->set_transaction_id( $result->transaction_id );
-		} else {
-			$this->set_error( $this->client->get_error() );
 		}
 	}
 

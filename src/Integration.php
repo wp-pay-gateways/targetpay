@@ -11,7 +11,7 @@ use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.3
  * @since   1.0.0
  */
 class Integration extends AbstractIntegration {
@@ -21,6 +21,8 @@ class Integration extends AbstractIntegration {
 		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
 		$this->dashboard_url = 'https://www.targetpay.com/login';
 		$this->provider      = 'targetpay';
+
+		$this->set_manual_url( __( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ) );
 	}
 
 	/**
