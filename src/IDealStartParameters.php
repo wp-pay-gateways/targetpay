@@ -7,7 +7,7 @@ use Pronamic\WordPress\Pay\Core\Util as Core_Util;
 /**
  * Title: TargetPay iDEAL start parameters
  * Description:
- * Copyright: 2005-2019 Pronamic
+ * Copyright: 2005-2020 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma

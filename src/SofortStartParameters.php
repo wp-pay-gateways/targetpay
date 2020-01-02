@@ -5,7 +5,7 @@ namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 /**
  * Title: TargetPay SOFORT Banking start parameters
  * Description:
- * Copyright: 2005-2019 Pronamic
+ * Copyright: 2005-2020 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
