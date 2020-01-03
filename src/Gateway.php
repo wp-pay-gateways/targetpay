@@ -2,6 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
+use Pronamic\WordPress\Pay\Banks\BankAccountDetails;
 use Pronamic\WordPress\Pay\Core\Gateway as Core_Gateway;
 use Pronamic\WordPress\Pay\Core\PaymentMethods;
 use Pronamic\WordPress\Pay\Payments\Payment;
@@ -121,9 +122,17 @@ class Gateway extends Core_Gateway {
 
 		// Set payment consumer details.
 		if ( Statuses::OK === $status->code ) {
-			$payment->set_consumer_name( $status->account_name );
-			$payment->set_consumer_account_number( $status->account_number );
-			$payment->set_consumer_city( $status->account_city );
+			$consumer_bank_details = $payment->get_consumer_bank_details();
+
+			if ( null === $consumer_bank_details ) {
+				$consumer_bank_details = new BankAccountDetails();
+
+				$payment->set_consumer_bank_details( $consumer_bank_details );
+			}
+
+			$consumer_bank_details->set_name( $status->account_name );
+			$consumer_bank_details->set_account_number( $status->account_number );
+			$consumer_bank_details->set_city( $status->account_city );
 		}
 	}
 }
