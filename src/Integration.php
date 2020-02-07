@@ -16,6 +16,8 @@ use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
  */
 class Integration extends AbstractIntegration {
 	public function __construct() {
+		parent::__construct();
+
 		$this->id            = 'targetpay-ideal';
 		$this->name          = 'TargetPay - iDEAL';
 		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
