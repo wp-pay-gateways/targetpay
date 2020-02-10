@@ -15,16 +15,25 @@ use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
  * @since   1.0.0
  */
 class Integration extends AbstractIntegration {
-	public function __construct() {
-		parent::__construct();
+	/**
+	 * Construct TargetPay integration.
+	 *
+	 * @param array $args Arguments.
+	 */
+	public function __construct( $args = array() ) {
+		$args = wp_parse_args(
+			$args,
+			array(
+				'id'            => 'targetpay-ideal',
+				'name'          => 'TargetPay - iDEAL',
+				'product_url'   => \__( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' ),
+				'dashboard_url' => 'https://www.targetpay.com/login',
+				'provider'      => 'targetpay',
+				'manual_url'    => \__( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ),
+			)
+		);
 
-		$this->id            = 'targetpay-ideal';
-		$this->name          = 'TargetPay - iDEAL';
-		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
-		$this->dashboard_url = 'https://www.targetpay.com/login';
-		$this->provider      = 'targetpay';
-
-		$this->set_manual_url( __( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ) );
+		parent::__construct( $args );
 	}
 
 	/**
