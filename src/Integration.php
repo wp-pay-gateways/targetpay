@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
-use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
+use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
 
 /**
  * Title: TargetPay integration
@@ -14,7 +14,7 @@ use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
  * @version 2.0.3
  * @since   1.0.0
  */
-class Integration extends AbstractIntegration {
+class Integration extends AbstractGatewayIntegration {
 	/**
 	 * Construct TargetPay integration.
 	 *
