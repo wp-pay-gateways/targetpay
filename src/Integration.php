@@ -2,27 +2,38 @@
 
 namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
 
-use Pronamic\WordPress\Pay\Gateways\Common\AbstractIntegration;
+use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
 
 /**
  * Title: TargetPay integration
  * Description:
- * Copyright: 2005-2019 Pronamic
+ * Copyright: 2005-2020 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
  * @version 2.0.3
  * @since   1.0.0
  */
-class Integration extends AbstractIntegration {
-	public function __construct() {
-		$this->id            = 'targetpay-ideal';
-		$this->name          = 'TargetPay - iDEAL';
-		$this->product_url   = __( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' );
-		$this->dashboard_url = 'https://www.targetpay.com/login';
-		$this->provider      = 'targetpay';
+class Integration extends AbstractGatewayIntegration {
+	/**
+	 * Construct TargetPay integration.
+	 *
+	 * @param array $args Arguments.
+	 */
+	public function __construct( $args = array() ) {
+		$args = wp_parse_args(
+			$args,
+			array(
+				'id'            => 'targetpay-ideal',
+				'name'          => 'TargetPay - iDEAL',
+				'product_url'   => \__( 'https://www.targetpay.com/info/ideal?setlang=en', 'pronamic_ideal' ),
+				'dashboard_url' => 'https://www.targetpay.com/login',
+				'provider'      => 'targetpay',
+				'manual_url'    => \__( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ),
+			)
+		);
 
-		$this->set_manual_url( __( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ) );
+		parent::__construct( $args );
 	}
 
 	/**
