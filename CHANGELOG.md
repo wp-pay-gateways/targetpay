@@ -35,7 +35,7 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 - Removed schedule status check event, this will be part of the Pronamic iDEAL plugin.
 
 ## [1.0.9] - 2016-06-08
-- Simplified the gateay payment start function.
+- Simplified the gateway payment start function.
 
 ## [1.0.8] - 2016-03-23
 - Updated gateway settings.
@@ -65,7 +65,7 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 - Make sure to use wp-pay/core library for XML filter.
 
 ## [1.0.1] - 2015-03-03
-- Changed WordPress pay core library requirment from `~1.0.0` to `>=1.0.0`.
+- Changed WordPress pay core library requirement from `~1.0.0` to `>=1.0.0`.
 
 ## 1.0.0 - 2015-01-19
 - First release.

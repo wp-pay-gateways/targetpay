@@ -12,4 +12,4 @@
 
 ## Documentation
 
-*	[TargetPay iDEAL V1.1 in PDF formaat](http://pronamic.nl/wp-content/uploads/2014/09/TargetPay_iDEAL_V1.1_nl.pdf)
+*	[TargetPay iDEAL V1.1 in PDF format](http://pronamic.nl/wp-content/uploads/2014/09/TargetPay_iDEAL_V1.1_nl.pdf)
