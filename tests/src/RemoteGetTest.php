@@ -8,7 +8,7 @@ use WP_Http;
 /**
  * Title: TargetPay remote get tests
  * Description:
- * Copyright: 2005-2020 Pronamic
+ * Copyright: 2005-2021 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma

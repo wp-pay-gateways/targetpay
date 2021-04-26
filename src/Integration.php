@@ -7,7 +7,7 @@ use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
 /**
  * Title: TargetPay integration
  * Description:
- * Copyright: 2005-2020 Pronamic
+ * Copyright: 2005-2021 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -49,7 +49,7 @@ class Integration extends AbstractGatewayIntegration {
 			'section' => 'general',
 			'type'    => 'html',
 			'html'    => sprintf(
-				/* translators: 1: TargetPay */
+				/* translators: 1: payment provider name */
 				__( 'Account details are provided by %1$s after registration. These settings need to match with the %1$s dashboard.', 'pronamic_ideal' ),
 				__( 'TargetPay', 'pronamic_ideal' )
 			),
