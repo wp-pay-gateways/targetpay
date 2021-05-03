@@ -122,12 +122,7 @@ class Client {
 
 				return $result;
 			} else {
-				$code        = $status;
-				$description = substr( $data, 7 );
-
-				$error = new Error( $code, $description );
-
-				throw new \Exception( 'targetpay', (string) $error );
+				throw new Error( $data );
 			}
 		}
 	}

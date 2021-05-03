@@ -12,54 +12,59 @@ namespace Pronamic\WordPress\Pay\Gateways\TargetPay;
  * @version 2.0.0
  * @since   1.0.0
  */
-class Error {
+class Error extends \Exception {
 	/**
-	 * Code
+	 * Error code.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private $code;
+	private $error_code;
 
 	/**
-	 * Description
+	 * Description.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	private $description;
 
 	/**
-	 * Constructs and initializes an TargetPay client object
+	 * Constructs and initializes an TargetPay error.
 	 *
-	 * @param string $code        Error code.
-	 * @param string $description Error description.
+	 * @param string $value Value.
 	 */
-	public function __construct( $code, $description ) {
-		$this->code        = $code;
-		$this->description = $description;
+	public function __construct( $value ) {
+		parent::__construct( $value );
+
+		$space_position = \strpos( $value, ' ' );
+
+		if ( false !== $space_position ) {
+			$this->error_code  = \substr( $value, 0, $space_position );
+			$this->description = \substr( $value, $space_position + 1 );
+		}
 	}
 
 	/**
 	 * Get code.
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 	public function get_code() {
-		return $this->code;
+		return $this->error_code;
 	}
 
 	/**
 	 * Set code.
 	 *
-	 * @param string $code Code.
+	 * @param string|null $code Code.
 	 */
 	public function set_code( $code ) {
-		$this->code = $code;
+		$this->error_code = $code;
 	}
 
 	/**
 	 * Get description.
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 	public function get_description() {
 		return $this->description;
@@ -68,18 +73,9 @@ class Error {
 	/**
 	 * Set description.
 	 *
-	 * @param string $description Description.
+	 * @param string|null $description Description.
 	 */
 	public function set_description( $description ) {
 		$this->description = $description;
-	}
-
-	/**
-	 * Create an string representation of this TargetPay error object.
-	 *
-	 * @return string
-	 */
-	public function __toString() {
-		return $this->get_code() . ' ' . $this->get_description();
 	}
 }
