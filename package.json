@@ -1,7 +1,7 @@
 {
   "name": "targetpay",
   "version": "2.1.1",
-  "description": "TargetPay driver for the WordPress payment processing library.",
+  "description": "✗ [DEPRECATED] TargetPay driver for the WordPress payment processing library.",
   "repository": {
     "type": "git",
     "url": "https://github.com/wp-pay-gateways/targetpay"
@@ -12,7 +12,8 @@
     "pay",
     "targetpay",
     "gateway",
-    "pronamic"
+    "pronamic",
+    "deprecated"
   ],
   "author": {
     "name": "Pronamic",
