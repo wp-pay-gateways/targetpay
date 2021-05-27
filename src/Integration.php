@@ -30,6 +30,7 @@ class Integration extends AbstractGatewayIntegration {
 				'dashboard_url' => 'https://www.targetpay.com/login',
 				'provider'      => 'targetpay',
 				'manual_url'    => \__( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ),
+				'deprecated'    => true,
 			)
 		);
 
