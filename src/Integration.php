@@ -11,7 +11,7 @@ use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.3
+ * @version 2.2.0
  * @since   1.0.0
  */
 class Integration extends AbstractGatewayIntegration {
