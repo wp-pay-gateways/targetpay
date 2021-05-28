@@ -11,7 +11,7 @@ use Pronamic\WordPress\Pay\AbstractGatewayIntegration;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.3
+ * @version 2.2.0
  * @since   1.0.0
  */
 class Integration extends AbstractGatewayIntegration {
@@ -30,6 +30,7 @@ class Integration extends AbstractGatewayIntegration {
 				'dashboard_url' => 'https://www.targetpay.com/login',
 				'provider'      => 'targetpay',
 				'manual_url'    => \__( 'https://www.pronamic.eu/support/how-to-connect-targetpay-with-wordpress-via-pronamic-pay/', 'pronamic_ideal' ),
+				'deprecated'    => true,
 			)
 		);
 

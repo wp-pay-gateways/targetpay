@@ -13,7 +13,7 @@ use stdClass;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.3
+ * @version 2.2.0
  * @since   1.0.0
  */
 class Client {
@@ -122,12 +122,7 @@ class Client {
 
 				return $result;
 			} else {
-				$code        = $status;
-				$description = substr( $data, 7 );
-
-				$error = new Error( $code, $description );
-
-				throw new \Exception( 'targetpay', (string) $error );
+				throw new Error( $data );
 			}
 		}
 	}
