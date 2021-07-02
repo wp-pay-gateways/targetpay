@@ -21,7 +21,7 @@ class IDealStartParametersTest extends \PHPUnit_Framework_TestCase {
 		$parameters->rtlo              = '12345';
 		$parameters->bank              = 'test';
 		$parameters->description       = 'Description';
-		$parameters->amount            = 100.00;
+		$parameters->amount            = '100';
 		$parameters->return_url        = 'http://example.com/';
 		$parameters->report_url        = 'http://example.com/';
 		$parameters->cinfo_in_callback = true;

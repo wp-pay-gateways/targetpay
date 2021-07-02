@@ -86,7 +86,7 @@ class Gateway extends Core_Gateway {
 		$parameters->rtlo              = $this->config->layoutcode;
 		$parameters->bank              = $payment->get_issuer();
 		$parameters->description       = $payment->get_description();
-		$parameters->amount            = $payment->get_total_amount()->get_cents();
+		$parameters->amount            = $payment->get_total_amount()->get_minor_units()->format( 0, '', '' );
 		$parameters->return_url        = $payment->get_return_url();
 		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
