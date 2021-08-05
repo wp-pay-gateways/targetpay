@@ -7,6 +7,11 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [3.0.0] - 2021-08-05
+- Updated to `pronamic/wp-pay-core` version `3.0.0`.
+- Updated to `pronamic/wp-money` version `2.0.0`.
+- Switched to `pronamic/wp-coding-standards`.
+
 ## [2.2.0] - 2021-05-28
 - Deprecated gateway in favor of DigiWallet.
 - Improved error handling.
@@ -78,7 +83,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/2.2.0...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/targetpay/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/wp-pay-gateways/targetpay/compare/2.2.0...3.0.0
 [2.2.0]: https://github.com/wp-pay-gateways/targetpay/compare/2.1.1...2.2.0
 [2.1.1]: https://github.com/wp-pay-gateways/targetpay/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/wp-pay-gateways/targetpay/compare/2.0.3...2.1.0

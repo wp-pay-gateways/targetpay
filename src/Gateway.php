@@ -47,7 +47,7 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Get issuers
 	 *
-	 * @see Pronamic_WP_Pay_Gateway::get_issuers()
+	 * @see Core_Gateway::get_issuers()
 	 */
 	public function get_issuers() {
 		$groups = array();
@@ -66,7 +66,7 @@ class Gateway extends Core_Gateway {
 	/**
 	 * Get supported payment methods
 	 *
-	 * @see Pronamic_WP_Pay_Gateway::get_supported_payment_methods()
+	 * @see Core_Gateway::get_supported_payment_methods()
 	 */
 	public function get_supported_payment_methods() {
 		return array(
@@ -86,7 +86,7 @@ class Gateway extends Core_Gateway {
 		$parameters->rtlo              = $this->config->layoutcode;
 		$parameters->bank              = $payment->get_issuer();
 		$parameters->description       = $payment->get_description();
-		$parameters->amount            = $payment->get_total_amount()->get_cents();
+		$parameters->amount            = $payment->get_total_amount()->get_minor_units()->format( 0, '', '' );
 		$parameters->return_url        = $payment->get_return_url();
 		$parameters->report_url        = $payment->get_return_url();
 		$parameters->cinfo_in_callback = 1;
